@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6664685020284970921}
   - component: {fileID: 1066363457204793936}
   - component: {fileID: 3267359795413486272}
-  - component: {fileID: 6520566715974465868}
   - component: {fileID: 3230958044730045739}
+  - component: {fileID: 6378061612690118097}
   - component: {fileID: 7243016598247546930}
   m_Layer: 0
   m_Name: HitMarker
@@ -105,6 +105,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0161978ebb1434d459d06f4eaaf033b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHitMarker
+--- !u!135 &6378061612690118097
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4266598065873234131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5000001
+  m_Center: {x: 0, y: 0.00000011920929, z: -0.000000059604645}
 --- !u!65 &7243016598247546930
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -120,7 +141,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -232,29 +253,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmerVegetableCatcher
   _hitTarget: {fileID: 4266598065873234131}
---- !u!54 &3425608515576604399 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 6145283505759599825, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
-  m_PrefabInstance: {fileID: 8845731580642138686}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &4599606842902407203 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 4978531528763404829, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
-  m_PrefabInstance: {fileID: 8845731580642138686}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &5120540743117759396 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 4453368080324884890, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
-  m_PrefabInstance: {fileID: 8845731580642138686}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6391704334150767735 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2481975132613021257, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
-  m_PrefabInstance: {fileID: 8845731580642138686}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3370353137568941068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
