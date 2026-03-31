@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-9111635988833879801
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Vegetables_Jump_Lettuce_B_02_{-9111635988833879801}
+  m_AudioClip: {fileID: 8300000, guid: 4bb79cd2e3d0eb947ab45591247c0bbf, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-7827068045159965650
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Vegetables_Jump_Lettuce_B_01_{-7827068045159965650}
+  m_AudioClip: {fileID: 8300000, guid: d9bbf8111b2cc744ba6682d9615d4a60, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Vegetables_Jump_Lettuce_B
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: -14.54545, y: 0}
+  m_PitchRandomizationRange: {x: -293.1819, y: 272.7273}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -7827068045159965650}
+  - {fileID: -9111635988833879801}
+  - {fileID: 7426789757228692941}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 2
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 1
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &7426789757228692941
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Vegetables_Jump_Lettuce_B_03_{7426789757228692941}
+  m_AudioClip: {fileID: 8300000, guid: ed89d0421d5fea449b02e949ecedd4b0, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
