@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (GiveMeInputElseWhere != null)
         {
@@ -116,7 +116,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        
+        PlayerController otherController = other.GetComponent<PlayerController>();
+        if (otherController)
+        {
+            //
+            // m_RigidBody.linearVelocity += m_SolidCollider.radius - 
+        }
     }
 
     private void OnCollisionEnter(Collision other)
