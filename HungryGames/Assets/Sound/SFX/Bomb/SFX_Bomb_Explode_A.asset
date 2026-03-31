@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 907c26540ae631c44baf0a9fa929c272, type: 3}
-  m_Name: SFX_Vegetables_Footsteps_A
+  m_Name: SFX_Bomb_Explode_A
   m_EditorClassIdentifier: Assembly-CSharp::SoundEffect
-  clip: {fileID: 6418180475301049370, guid: 25c42e40ab790e149bbccc45dfdbe34b, type: 2}
-  sampleClip: {fileID: 8300000, guid: 81aff2ebdad2a384d87e4309dc9d36c1, type: 3}
+  clip: {fileID: 6418180475301049370, guid: 77a643051317c2143906b070eaba6939, type: 2}
+  sampleClip: {fileID: 8300000, guid: 96f366b0d5198d649aa453537a52b64b, type: 3}
   pitch: 0
   volume: 1
-  audioMixerGroup: {fileID: 3795139611937410409, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
+  audioMixerGroup: {fileID: 5038637909051037312, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
   is3D: 1
   minDistance: 0
   maxDistance: 200
