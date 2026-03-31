@@ -1,4 +1,4 @@
-using System;
+using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +15,7 @@ public class FarmerVegetableCatcher : MonoBehaviour
         if (_vegetablesInrange.Count <= 1) return;
         CalculateClosestVegetable();
     }
-    
+
     public void AddVegetableInRange(GameObject vegetable)
     {
         _vegetablesInrange.Add(vegetable);
