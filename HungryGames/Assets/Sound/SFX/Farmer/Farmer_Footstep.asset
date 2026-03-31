@@ -1,43 +1,63 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1233149941 &-7378136726103627971
+--- !u!1233149941 &-3962032490845174549
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Farmer_ClothMov_04_{-7378136726103627971}
-  m_AudioClip: {fileID: 8300000, guid: be0e9e6d4a106164ab739aa7d7482fcc, type: 3}
+  m_Name: Farmer_Footstep_01_{-3962032490845174549}
+  m_AudioClip: {fileID: 8300000, guid: b1c6bcdd230594446ba8a1413341bdc2, type: 3}
   m_Volume: 0
   m_Enabled: 1
---- !u!1233149941 &-744041727852977439
+--- !u!1233149941 &2975348632686266128
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Farmer_ClothMov_01_{-744041727852977439}
-  m_AudioClip: {fileID: 8300000, guid: b23c8a5ab05014c41961ce8ee6dbc366, type: 3}
+  m_Name: Farmer_Footstep_02_{2975348632686266128}
+  m_AudioClip: {fileID: 8300000, guid: 13f06d4f413d6a345a728765af41e64b, type: 3}
   m_Volume: 0
   m_Enabled: 1
---- !u!1233149941 &1007089853539331892
+--- !u!1233149941 &3056305610527455855
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Farmer_ClothMov_02_{1007089853539331892}
-  m_AudioClip: {fileID: 8300000, guid: c2faa80d42e83164b8070f119cef8290, type: 3}
+  m_Name: Farmer_Footstep_03_{3056305610527455855}
+  m_AudioClip: {fileID: 8300000, guid: 71b41a32c72a3e7489934a0422bf3b3e, type: 3}
   m_Volume: 0
   m_Enabled: 1
---- !u!1233149941 &1289564835608002217
+--- !u!1233149941 &3476728394043802152
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Farmer_ClothMov_03_{1289564835608002217}
-  m_AudioClip: {fileID: 8300000, guid: b04dd4e3a47d25b4b9d54a46aec1556f, type: 3}
+  m_Name: Farmer_Footstep_05_{3476728394043802152}
+  m_AudioClip: {fileID: 8300000, guid: 3c9791a462a81d2479f479fec69b40f4, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5761138851102373118
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Farmer_Footstep_06_{5761138851102373118}
+  m_AudioClip: {fileID: 8300000, guid: b7d1c738de2597d4eb22c4f1b8c34481, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5900568135849211229
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Farmer_Footstep_04_{5900568135849211229}
+  m_AudioClip: {fileID: 8300000, guid: e0a331ea62f0ac341adabda903c6dac6, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1307931743 &6418180475301049370
@@ -51,16 +71,18 @@ AudioRandomContainer:
   m_Pitch: 0
   m_AutomaticTriggerTime: 0
   m_LoopCount: 1
-  m_VolumeRandomizationRange: {x: -6.8181877, y: 0}
-  m_PitchRandomizationRange: {x: -320.45465, y: 231.81825}
+  m_VolumeRandomizationRange: {x: -3.1818275, y: 0}
+  m_PitchRandomizationRange: {x: -231.81839, y: 231.81825}
   m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
-  - {fileID: -744041727852977439}
-  - {fileID: 1007089853539331892}
-  - {fileID: 1289564835608002217}
-  - {fileID: -7378136726103627971}
-  m_AvoidRepeatingLast: 2
+  - {fileID: -3962032490845174549}
+  - {fileID: 2975348632686266128}
+  - {fileID: 3056305610527455855}
+  - {fileID: 5900568135849211229}
+  - {fileID: 3476728394043802152}
+  - {fileID: 5761138851102373118}
+  m_AvoidRepeatingLast: 4
   m_PlaybackMode: 2
   m_TriggerMode: 0
   m_AutomaticTriggerMode: 1

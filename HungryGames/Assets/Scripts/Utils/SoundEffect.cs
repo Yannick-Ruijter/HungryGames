@@ -18,6 +18,8 @@ public class SoundEffect : ScriptableObject
 
     public AudioResource GetAClip()
     {
+        if (clip == null)
+            return null;
         return clip;
     }
 
