@@ -68,4 +68,9 @@ public class NPC_AI : MonoBehaviour
         return PrefabUtility.FindAllInstancesOfPrefab(_bombPrefab, SceneManager.GetActiveScene());
     }
 
+    private GameObject closestBomb()
+    {
+        return null;
+    }
+
 }
