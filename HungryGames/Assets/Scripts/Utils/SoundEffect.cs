@@ -10,6 +10,7 @@ public class SoundEffect : ScriptableObject
     public float pitch;
     public float volume;
 
+    public AudioMixerGroup audioMixerGroup;
     public bool is3D = false;
     public float minDistance = 0.0f;
     public float maxDistance = 100.0f;

@@ -146,6 +146,7 @@ public class PlayerAudioManager : MonoBehaviour
         
         source.resource = clip;
 
+        source.outputAudioMixerGroup = soundEffect.audioMixerGroup;
         source.spatialBlend = 0.0f;
         source.volume = soundEffect.volume;
         source.pitch = soundEffect.pitch;
@@ -168,6 +169,7 @@ public class PlayerAudioManager : MonoBehaviour
 
         source.audioSource.resource = clip;
 
+        source.audioSource.outputAudioMixerGroup = soundEffect.audioMixerGroup;
         source.audioSource.spatialBlend = 1.0f;
         source.audioSource.volume = soundEffect.volume;
         source.audioSource.pitch = soundEffect.pitch;

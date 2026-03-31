@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 907c26540ae631c44baf0a9fa929c272, type: 3}
-  m_Name: SFX_Vegetables_Jump_Tomato_B
+  m_Name: SFX_Farmer_Voice_Angry
   m_EditorClassIdentifier: Assembly-CSharp::SoundEffect
-  clip: {fileID: 6418180475301049370, guid: 8b0276e363a5b1242b757d9753e6bb27, type: 2}
-  sampleClip: {fileID: 8300000, guid: fae45436f722a0b47975b68c79a22076, type: 3}
+  clip: {fileID: 6418180475301049370, guid: a18eaa1278b34f242a8af42a5685f71b, type: 2}
+  sampleClip: {fileID: 8300000, guid: 7147ebd8c5d8e7347bea89a2ed272368, type: 3}
   pitch: 0
   volume: 1
-  audioMixerGroup: {fileID: 3795139611937410409, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
+  audioMixerGroup: {fileID: -6520124622713891884, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
   is3D: 1
   minDistance: 0
   maxDistance: 200
