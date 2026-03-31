@@ -1,18 +1,26 @@
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class NPC_AI : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navAgent;
-    //[SerializeField] private NavMeshSurface _navSurface;
+    [SerializeField] private PlayerController _playerController;
+
     private Vector3 _velocity;
+    private ControllerInput _controllerInput;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _playerController.GiveMeInputElseWhere += GetControllerInput;
         NavMeshHit hit;
-        NavMesh.SamplePosition(new Vector3(1, 0, 1), out hit, 1.0f, NavMesh.AllAreas);
+        NavMesh.SamplePosition(new Vector3(1, 0, 1), out hit, 100.0f, NavMesh.AllAreas);
         _navAgent.destination = hit.position;
+        _navAgent.updatePosition = false;
+        //_navAgent.enabled = false;
     }
 
     // Update is called once per frame
@@ -20,18 +28,32 @@ public class NPC_AI : MonoBehaviour
     {
         // start of frame, enabl nav agent. get stuff. diable nav agent.
         // con
-        _navAgent.enabled = true;
+        //_navAgent.enabled = true;
         //get positionn and keep between 0, 1
-        //NavMeshHit hit;
-        //NavMesh.SamplePosition(new Vector3(1,0,1), out hit, 1.0f, NavMesh.AllAreas);
-        //_navAgent.destination = hit.position;
+        _navAgent.nextPosition = transform.position;
         _velocity = _navAgent.velocity;
         if(_velocity.magnitude > 1)
         {
             _velocity.Normalize();
         }
-        
-        transform.position += _velocity;
-        _navAgent.enabled = false;
+
+        if(_navAgent.remainingDistance <= 2f)
+        {
+            NavMeshHit hit;
+            NavMesh.SamplePosition(new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(-5.0f, 5.0f)), out hit, 100.0f, NavMesh.AllAreas);
+            _navAgent.destination = hit.position;
+        }
+
+
+        _controllerInput.move = new Vector2(_velocity.x, _velocity.z);
+        _controllerInput.jump = false;
+
+        //_navAgent.enabled = false;
     }
+
+    private ControllerInput GetControllerInput()
+    {
+        return _controllerInput;
+    }
+
 }
