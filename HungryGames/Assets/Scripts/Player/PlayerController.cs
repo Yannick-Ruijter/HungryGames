@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
         }
         if (!m_HasInput)
             return;
+
+        m_Direction.y = 0.0f;
         
         transform.forward = Vector3.Lerp(transform.forward, m_Direction, Time.deltaTime * 5.0f / Mathf.Max(_rotationSpeed, 0.01f));
     }
