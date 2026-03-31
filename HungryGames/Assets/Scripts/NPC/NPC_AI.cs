@@ -1,12 +1,18 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class NPC_AI : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navAgent;
     [SerializeField] private PlayerController _playerController;
+    [SerializeField] public GameObject _bombPrefab;
+    private GameObject[] _bombs;
 
     private Vector3 _velocity;
     private ControllerInput _controllerInput;
@@ -15,6 +21,7 @@ public class NPC_AI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _bombs = FindAllPrefabInstances();
         _playerController.GiveMeInputElseWhere += GetControllerInput;
         NavMeshHit hit;
         NavMesh.SamplePosition(new Vector3(1, 0, 1), out hit, 100.0f, NavMesh.AllAreas);
@@ -54,6 +61,11 @@ public class NPC_AI : MonoBehaviour
     private ControllerInput GetControllerInput()
     {
         return _controllerInput;
+    }
+
+    private GameObject[] FindAllPrefabInstances()
+    {
+        return PrefabUtility.FindAllInstancesOfPrefab(_bombPrefab, SceneManager.GetActiveScene());
     }
 
 }

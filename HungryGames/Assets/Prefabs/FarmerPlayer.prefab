@@ -190,8 +190,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: FarmerPlayer
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3607060253728470957, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7493907816063530803, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
@@ -224,38 +223,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a83bab3b2b816a4ab0d3403c85149e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmerController
-  m_PlayerInput: {fileID: 6391704334150767735}
-  m_SolidCollider: {fileID: 5120540743117759396}
-  m_TriggerCollider: {fileID: 4599606842902407203}
-  _movementSpeed: 10
-  _acceleration: 10
-  _rotationSpeed: 10
-  m_RigidBody: {fileID: 3425608515576604399}
-  _camera: {fileID: 0}
   _hitTarget: {fileID: 4266598065873234131}
---- !u!54 &3425608515576604399 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 6145283505759599825, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
-  m_PrefabInstance: {fileID: 8845731580642138686}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &4599606842902407203 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 4978531528763404829, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
-  m_PrefabInstance: {fileID: 8845731580642138686}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &5120540743117759396 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 4453368080324884890, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
-  m_PrefabInstance: {fileID: 8845731580642138686}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6391704334150767735 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2481975132613021257, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
-  m_PrefabInstance: {fileID: 8845731580642138686}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3370353137568941068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
