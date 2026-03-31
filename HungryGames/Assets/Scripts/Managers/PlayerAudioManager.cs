@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerAudioManager : MonoBehaviour
 {
@@ -137,11 +139,12 @@ public class PlayerAudioManager : MonoBehaviour
             return;
         }
 
-        AudioClip clip = soundEffect.GetAClip();
+        AudioResource clip = soundEffect.GetAClip();
         
-        AudioSource source = GetAvailableLocal(clip);
+        AudioSource source = GetAvailableLocal(clip, soundEffect);
 
-        source.clip = clip;
+        
+        source.resource = clip;
 
         source.spatialBlend = 0.0f;
         source.volume = soundEffect.volume;
@@ -159,11 +162,11 @@ public class PlayerAudioManager : MonoBehaviour
             return;
         }
         
-        AudioClip clip = soundEffect.GetAClip();
+        AudioResource clip = soundEffect.GetAClip();
         
-        WorldSound source = GetAvailableWorld(clip, target, position);
+        WorldSound source = GetAvailableWorld(clip, soundEffect, target, position);
 
-        source.audioSource.clip = clip;
+        source.audioSource.resource = clip;
 
         source.audioSource.spatialBlend = 1.0f;
         source.audioSource.volume = soundEffect.volume;
@@ -197,7 +200,7 @@ public class PlayerAudioManager : MonoBehaviour
         throw new System.Exception("Failed to locate PlayerAudioManager.");
     }
 
-    private AudioSource GetAvailableLocal(AudioClip clip)
+    private AudioSource GetAvailableLocal(AudioResource clip, SoundEffect soundEffect)
     {
         for (int index = 0; index < _localAudioSources.Length; index++)
         {
@@ -207,13 +210,13 @@ public class PlayerAudioManager : MonoBehaviour
 
         if (_dynamicAllocWhenExceed) {
             AudioSource source = Instantiate(_audioSourcePrefab);
-            Destroy(source.gameObject, clip.length);
+            Destroy(source.gameObject, soundEffect.GetSampleClipLength() + 1f);
             return source;
         }
         return null;
     }
     
-    private WorldSound GetAvailableWorld(AudioClip clip, Transform target, Vector3 position)
+    private WorldSound GetAvailableWorld(AudioResource clip, SoundEffect soundEffect, Transform target, Vector3 position)
     {
         for (int index = 0; index < _localAudioSources.Length; index++)
         {
@@ -224,7 +227,7 @@ public class PlayerAudioManager : MonoBehaviour
         if (_dynamicAllocWhenExceed)
         {
             AudioSource source = Instantiate(_audioSourcePrefab);
-            Destroy(source.gameObject, clip.length);
+            Destroy(source.gameObject, soundEffect.GetSampleClipLength() + 1f);
             WorldSound sound = new WorldSound()
             {
                 trackedObject = target,
