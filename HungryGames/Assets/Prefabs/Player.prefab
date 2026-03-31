@@ -83,9 +83,9 @@ MonoBehaviour:
   m_PlayerInput: {fileID: 2481975132613021257}
   m_SolidCollider: {fileID: 4453368080324884890}
   m_TriggerCollider: {fileID: 4978531528763404829}
-  _movementSpeed: 0
-  _acceleration: 0
-  _rotationSpeed: 0
+  _movementSpeed: 5
+  _acceleration: 5
+  _rotationSpeed: 0.1
   m_RigidBody: {fileID: 6145283505759599825}
   _camera: {fileID: 0}
 --- !u!136 &4453368080324884890
@@ -186,7 +186,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4611123563344401727, guid: ddec6db48b539214ebadb7ec40cac870, type: 3}
+  - {fileID: 2100000, guid: aff16af3239d68145bb12f689a6ff9d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
