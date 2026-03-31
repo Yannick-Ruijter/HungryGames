@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4978531528763404829}
   - component: {fileID: 9136094263900522626}
   - component: {fileID: 5306848281840739159}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,9 +83,10 @@ MonoBehaviour:
   m_PlayerInput: {fileID: 2481975132613021257}
   m_SolidCollider: {fileID: 4453368080324884890}
   m_TriggerCollider: {fileID: 4978531528763404829}
-  _movementSpeed: 5
+  _movementSpeed: 4
   _acceleration: 5
   _rotationSpeed: 0.1
+  _impulseJumpVelocity: 2
   m_RigidBody: {fileID: 6145283505759599825}
   _camera: {fileID: 0}
 --- !u!136 &4453368080324884890
