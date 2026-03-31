@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerHitMarker : MonoBehaviour
 {
-    private FarmerController _farmer = null;
+    private FarmerVegetableCatcher _farmer = null;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _farmer = GetComponentInParent<FarmerController>();
+        _farmer = GetComponentInParent<FarmerVegetableCatcher>();
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -1,14 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Diagnostics;
-public class FarmerController : MonoBehaviour
+using UnityEngine;
+
+public class FarmerVegetableCatcher : MonoBehaviour
 {
     [SerializeField] GameObject _hitTarget = null;
     private List<GameObject> _vegetablesInrange = new();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private GameObject _closestVegetable = null;
-    // Update is called once per frame
+
     private void Update()
     {
         if (_vegetablesInrange.Count <= 1) return;

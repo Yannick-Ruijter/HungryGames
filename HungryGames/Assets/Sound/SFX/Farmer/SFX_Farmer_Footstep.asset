@@ -16,6 +16,7 @@ MonoBehaviour:
   sampleClip: {fileID: 8300000, guid: b1c6bcdd230594446ba8a1413341bdc2, type: 3}
   pitch: 0
   volume: 1
+  audioMixerGroup: {fileID: -6520124622713891884, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
   is3D: 1
   minDistance: 0
   maxDistance: 200
