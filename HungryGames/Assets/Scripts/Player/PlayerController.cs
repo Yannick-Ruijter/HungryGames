@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _movementSpeed;
     [SerializeField] private float _acceleration;
     [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _impulseJumpVelocity = 2.0f;
     
     [SerializeField] private Rigidbody m_RigidBody;
     [SerializeField] private Camera _camera;
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private ControllerInput m_ControllerInput;
     
     private Vector3 m_Direction = Vector3.zero;
+
+    private bool m_IsGrounded = false;
     
     private bool m_HasInput
     {
@@ -93,6 +96,13 @@ public class PlayerController : MonoBehaviour
         );
 
         velocity.y = m_RigidBody.linearVelocity.y;
+        
+        if (m_IsGrounded && isJumping)
+        {
+            m_IsGrounded = false;
+
+            velocity.y += _impulseJumpVelocity;
+        }
 
         m_RigidBody.linearVelocity = velocity;
     }
@@ -119,23 +129,49 @@ public class PlayerController : MonoBehaviour
         PlayerController otherController = other.GetComponent<PlayerController>();
         if (otherController)
         {
-            //
-            // m_RigidBody.linearVelocity += m_SolidCollider.radius - 
+            Vector3 p31 = transform.position;
+            Vector3 p32 = otherController.transform.position;
+
+            Vector2 p21 = new Vector2(p31.x, p31.z), p22 = new Vector2(p32.x, p32.z);
+            
+            float distance = Vector2.Distance(p21, p22);
+
+            float totalRadius = m_TriggerCollider.radius + otherController.m_TriggerCollider.radius;
+            
+            float interp = Mathf.Max((totalRadius - distance) / totalRadius, 0.1f);
+
+            Vector2 direction = distance != 0.0f ? (p21 - p22) / distance : new Vector2(0.0f, 0.0f);
+
+            m_RigidBody.linearVelocity += new Vector3(direction.x, 0.0f, direction.y) * (interp * Time.fixedDeltaTime) * 30.0f;
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        
+        foreach (ContactPoint contact in other.contacts)
+        {
+            if (Vector3.Dot(contact.normal, Vector3.up) > 0.8f)
+            {
+                m_IsGrounded = true;
+                break;
+            }
+        }
     }
 
     private void OnCollisionStay(Collision other)
     {
-        
+        foreach (ContactPoint contact in other.contacts)
+        {
+            if (Vector3.Dot(contact.normal, Vector3.up) > 0.8f)
+            {
+                m_IsGrounded = true;
+                break;
+            }
+        }
     }
 
     private void OnCollisionExit(Collision other)
     {
-        
+        m_IsGrounded = false;
     }
 }
