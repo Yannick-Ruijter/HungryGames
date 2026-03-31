@@ -65,6 +65,7 @@ public class NPC_AI : MonoBehaviour
         tiimer -= Time.deltaTime;
         if (tiimer < 0)
         {
+            if(_canJump) _jump = true;
             tiimer = 1f;
             ChangeDirction();
         }
