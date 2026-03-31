@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-7378136726103627971
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Farmer_ClothMov_04_{-7378136726103627971}
+  m_AudioClip: {fileID: 8300000, guid: be0e9e6d4a106164ab739aa7d7482fcc, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-744041727852977439
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Farmer_ClothMov_01_{-744041727852977439}
+  m_AudioClip: {fileID: 8300000, guid: b23c8a5ab05014c41961ce8ee6dbc366, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1007089853539331892
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Farmer_ClothMov_02_{1007089853539331892}
+  m_AudioClip: {fileID: 8300000, guid: c2faa80d42e83164b8070f119cef8290, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1289564835608002217
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Farmer_ClothMov_03_{1289564835608002217}
+  m_AudioClip: {fileID: 8300000, guid: b04dd4e3a47d25b4b9d54a46aec1556f, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Farmer_ClothMov
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: -6.8181877, y: 0}
+  m_PitchRandomizationRange: {x: -320.45465, y: 231.81825}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -744041727852977439}
+  - {fileID: 1007089853539331892}
+  - {fileID: 1289564835608002217}
+  - {fileID: -7378136726103627971}
+  m_AvoidRepeatingLast: 2
+  m_PlaybackMode: 2
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 1
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0

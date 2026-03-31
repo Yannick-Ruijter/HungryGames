@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 [CreateAssetMenu(fileName = "sfx", menuName = "New Sound Effect")]
 public class SoundEffect : ScriptableObject
 {
-    public AudioClip[] clips;
+    public AudioResource clip;
+    public AudioClip sampleClip;
 
     public float pitch;
     public float volume;
@@ -14,12 +16,13 @@ public class SoundEffect : ScriptableObject
     
     public AnimationCurve fallOff;
 
-    public AudioClip GetAClip()
+    public AudioResource GetAClip()
     {
-        if (clips == null || clips.Length == 0)
-            return null;
-        if (clips.Length == 1)
-            return clips[0];
-        return clips[Random.Range(0, clips.Length)];
+        return clip;
+    }
+
+    public float GetSampleClipLength() // AudioRandomContainer is an AudioResource and doesn't support .length
+    {
+        return sampleClip.length;
     }
 }
