@@ -156,6 +156,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1997438773}
     - target: {fileID: 2827033502343925165, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827033502343925165, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       propertyPath: _bombPrefab
       value: 
       objectReference: {fileID: 2470248043285964806, guid: 0192cd947ef7c324084804a602c3e50a, type: 3}
@@ -165,11 +169,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2827033502343925165, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       propertyPath: _fieldRadius
-      value: 35
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827033502343925165, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: _maxJumpTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2827033502343925165, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       propertyPath: _wanderRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827033502343925165, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: _maxswitchTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827033502343925165, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: _minswitchTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2827033502343925165, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       propertyPath: _wanderAngleChange
@@ -226,6 +242,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1997438773}
+    - targetCorrespondingSourceObject: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1997438784}
   m_SourcePrefab: {fileID: 100100000, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
 --- !u!1001 &175577991
 PrefabInstance:
@@ -2168,6 +2187,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1997438784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997438762}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5ef80d222de7d45a621f481e9a1753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlopController
+  m_PlayerController: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
