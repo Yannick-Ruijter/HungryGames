@@ -68,7 +68,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2549104550721976278, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -78,6 +79,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5001629423623839305, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7630757125366254303}
+    - targetCorrespondingSourceObject: {fileID: 5001629423623839305, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8415936440334428241}
   m_SourcePrefab: {fileID: 100100000, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
 --- !u!114 &220723282974851990 stripped
 MonoBehaviour:
@@ -90,17 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
---- !u!114 &1400425571463543410 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2549104550721976278, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
-  m_PrefabInstance: {fileID: 3463112766500916644}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8459494856775291885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb917357529578a44815e427ca507644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &8459494856775291885 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5001629423623839305, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
@@ -119,7 +112,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_AI
   _navAgent: {fileID: 7630757125366254303}
-  _playerController: {fileID: 1400425571463543410}
+  _playerController: {fileID: 0}
+  _bombPrefab: {fileID: 0}
+  _fieldRadius: 10
+  _borderBuffer: 1
+  _minswitchTime: 0
+  _maxswitchTime: 7
+  _minJumpTime: 0
+  _maxJumpTime: 3
+  _wanderRadius: 0
+  _wanderAngleChange: 10
+  _minwanderTime: 0
+  _maxwanderTime: 5
+  _maxDiffuseTime: 5
+  _maxDiffuseChance: 5
 --- !u!195 &7630757125366254303
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -142,3 +148,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8415936440334428241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459494856775291885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8978bf73f0fdff44920769c2043a2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeshSwitcher
+  _meshes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
