@@ -118,7 +118,7 @@ public class GameState : MonoBehaviour
         float minutes, seconds;
         GetTime(out minutes, out seconds);
 
-        return $"{minutes::0}:{seconds::00}";
+        return $"{(int)minutes}:{((int)seconds > 9 ? (int)seconds : "0" + (int)seconds)}";
     }
 
     public void OnDamage(Entity entity)
