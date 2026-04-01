@@ -28,6 +28,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: VegetableNPC
       objectReference: {fileID: 0}
+    - target: {fileID: 6721115458130967807, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      propertyPath: lives
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721115458130967807, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      propertyPath: isPlayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8543700478360975176, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

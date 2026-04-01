@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -11,6 +12,9 @@ public class GameState : MonoBehaviour
 {
     public static GameState Instance { get; private set; }
 
+    [SerializeField] private PlayerManager _playerManager;
+
+
     [SerializeField] private TMP_Text m_CountDownText;
     [SerializeField] private TMP_Text m_TimerText;
     public UnityEvent<string> onCountDownTextUpdate = new UnityEvent<string>();
@@ -18,7 +22,7 @@ public class GameState : MonoBehaviour
 
     private Stage m_GameStage = Stage.BeforeStart;
 
-    public int CountdownTime = 3;
+    [SerializeField] public int CountdownTime = 3;
 
     [Tooltip("Round time in seconds.")]
     public float RoundTime = 300.0f;
@@ -36,7 +40,11 @@ public class GameState : MonoBehaviour
 
     private IEnumerator Start()
     {
+        SpawnPlayers();
+
         yield return new WaitForEndOfFrame();
+
+        
 
         m_GameStage = Stage.StartSequence;
         
@@ -75,6 +83,10 @@ public class GameState : MonoBehaviour
         onCountDownTextUpdate.Invoke(text);
     }
 
+    private void SpawnPlayers()
+    {
+        _playerManager.SpawnPlayers();
+    }
     private void SetPlayerCanMove(bool canMove)
     {
         foreach (PlayerController controller in PlayerController.Controllers)
