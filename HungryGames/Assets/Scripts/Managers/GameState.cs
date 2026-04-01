@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -10,6 +11,9 @@ using Random = UnityEngine.Random;
 public class GameState : MonoBehaviour
 {
     public static GameState Instance { get; private set; }
+
+    [SerializeField] private PlayerManager _playerManager;
+
 
     [SerializeField] private TMP_Text m_CountDownText;
     [SerializeField] private TMP_Text m_TimerText;
@@ -36,7 +40,11 @@ public class GameState : MonoBehaviour
 
     private IEnumerator Start()
     {
+        SpawnPlayers();
+
         yield return new WaitForEndOfFrame();
+
+        
 
         m_GameStage = Stage.StartSequence;
         
@@ -75,6 +83,10 @@ public class GameState : MonoBehaviour
         onCountDownTextUpdate.Invoke(text);
     }
 
+    private void SpawnPlayers()
+    {
+        _playerManager.SpawnPlayers();
+    }
     private void SetPlayerCanMove(bool canMove)
     {
         foreach (PlayerController controller in PlayerController.Controllers)
