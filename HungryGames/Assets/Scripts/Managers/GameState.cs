@@ -12,8 +12,13 @@ public class GameState : MonoBehaviour
     public static GameState Instance { get; private set; }
 
     [SerializeField] private TMP_Text m_CountDownText;
+    [SerializeField] private TMP_Text m_TimerText;
+    public UnityEvent<string> onCountDownTextUpdate = new UnityEvent<string>();
+    public UnityEvent onGameStart = new UnityEvent();
 
     private Stage m_GameStage = Stage.BeforeStart;
+
+    public int CountdownTime = 3;
 
     [Tooltip("Round time in seconds.")]
     public float RoundTime = 300.0f;
@@ -35,26 +40,45 @@ public class GameState : MonoBehaviour
 
         m_GameStage = Stage.StartSequence;
         
-        foreach (PlayerController controller in PlayerController.Controllers)
-            controller.CanMove = false;
+        SetPlayerCanMove(false);
 
-        for (int countDownIndex = 0; countDownIndex < 3; countDownIndex++)
+        for (int countDownIndex = 0; countDownIndex < CountdownTime; countDownIndex++)
         {
-            int time = 3 - countDownIndex;
+            int time = CountdownTime - countDownIndex;
             
-            m_CountDownText.text = time.ToString();
+            SetCountdownText(time.ToString());
             
             yield return new WaitForSeconds(1.0f);
         }
         
         // Begin game for everything
 
-        m_CountDownText.text = "START!!!";
+        SetCountdownText("START!!!");
+        
+        onGameStart.Invoke();
 
-        foreach (PlayerController controller in PlayerController.Controllers)
-            controller.CanMove = true;
+        SetPlayerCanMove(true);
         
         m_GameStage = Stage.Started;
+    }
+
+    private void Update()
+    {
+        if (m_TimerText)
+            m_TimerText.text = FormattedTime();
+    }
+
+    private void SetCountdownText(string text)
+    {
+        if (m_CountDownText)
+            m_CountDownText.text = text;
+        onCountDownTextUpdate.Invoke(text);
+    }
+
+    private void SetPlayerCanMove(bool canMove)
+    {
+        foreach (PlayerController controller in PlayerController.Controllers)
+            controller.CanMove = canMove;
     }
 
     public void OnDeath(Entity entity)
@@ -83,7 +107,7 @@ public class GameState : MonoBehaviour
 
     private void GetTime(out float minutes, out float seconds)
     {
-        float time = RoundTime - Time.time;
+        float time = RoundTime - (Time.time - CountdownTime);
 
         minutes = Mathf.Floor(time / 60.0f);
         seconds = Mathf.Floor(time % 60.0f);
@@ -94,7 +118,7 @@ public class GameState : MonoBehaviour
         float minutes, seconds;
         GetTime(out minutes, out seconds);
 
-        return $"{minutes::0}:{seconds::00}";
+        return $"{(int)minutes}:{((int)seconds > 9 ? (int)seconds : "0" + (int)seconds)}";
     }
 
     public void OnDamage(Entity entity)
@@ -133,11 +157,13 @@ public class GameState : MonoBehaviour
     private void VegetablesWin()
     {
         m_GameStage = Stage.VegetablesWin;
+        SetPlayerCanMove(false);
     }
 
     private void FarmerWins()
     {
         m_GameStage = Stage.FarmerWin;
+        SetPlayerCanMove(false);
     }
 
     public void OnMineDefuse(MineController mine)
