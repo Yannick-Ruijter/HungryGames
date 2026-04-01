@@ -14,6 +14,7 @@ public class PlayerMainMenu : MonoBehaviour
     public EntityMeshType _currentType = EntityMeshType.None;
     private bool _characterSelected = false;
     public bool CharacterSelected { get { return _characterSelected; } }
+    private PlayerManager _playerManager;
     private int _playerNr;
     public int SelectedCharIndex = 0;
     private ControllerDisplay _controllerDisplay = null;
@@ -32,6 +33,7 @@ public class PlayerMainMenu : MonoBehaviour
         PlayerCount++;
         _rightArrow.SetActive(_controllerDisplay.CanGoRight(SelectedCharIndex));
         _leftArrow.SetActive(_controllerDisplay.CanGoLeft(SelectedCharIndex));
+        _playerManager = FindFirstObjectByType<PlayerManager>();
     }
 
     public void NavigateMenu(InputAction.CallbackContext context )
