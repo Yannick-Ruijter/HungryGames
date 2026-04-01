@@ -76,11 +76,14 @@ public class PlayerManager : MonoBehaviour
                 ? _farmer
                 : _vegetable;
 
-            PlayerInput.Instantiate(
+            var newPlayer = PlayerInput.Instantiate(
                 prefab,
                 controlScheme: "Gamepad",
                 pairWithDevice: player.device
             );
+
+
+            newPlayer.gameObject.GetComponent<Entity>().AssignType(player.type);
         }
     }
 
