@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class GameState : MonoBehaviour
 {
@@ -13,12 +14,15 @@ public class GameState : MonoBehaviour
     [SerializeField] private TMP_Text m_CountDownText;
 
     private Stage m_GameStage = Stage.BeforeStart;
+
+    [Tooltip("Round time in seconds.")]
+    public float RoundTime = 300.0f;
     
     private HashSet<MineController> m_DefusedMines = new HashSet<MineController>();
 
     public int DefusedMineDifferenceRequirement = 1;
-    
-    private HashSet<InputDevice> m_DeadDevices = new HashSet<InputDevice>();
+
+    private int DeadPlayerCount = 0;
     
     private bool IsGameFinished
     {
@@ -60,8 +64,37 @@ public class GameState : MonoBehaviour
         entity.onDeath.Invoke();
         if (entity.isPlayer)
         {
-            
+            if (entity.entityMeshType == EntityMeshType.Farmer)
+            {
+                VegetablesWin();
+            }
+            else
+            {
+                DeadPlayerCount++;
+                if (Entity.VegetablePlayerCount - DeadPlayerCount == 0)
+                {
+                    // All players are dead
+                    
+                    FarmerWins();
+                }
+            }
         }
+    }
+
+    private void GetTime(out float minutes, out float seconds)
+    {
+        float time = RoundTime - Time.time;
+
+        minutes = Mathf.Floor(time / 60.0f);
+        seconds = Mathf.Floor(time % 60.0f);
+    }
+
+    public string FormattedTime()
+    {
+        float minutes, seconds;
+        GetTime(out minutes, out seconds);
+
+        return $"{minutes::0}:{seconds::00}";
     }
 
     public void OnDamage(Entity entity)
@@ -76,6 +109,25 @@ public class GameState : MonoBehaviour
 
         if (entity.entityMeshType == EntityMeshType.Farmer)
             return;
+
+        List<Entity> npc_veg =
+            Entity.Entities.FindAll((entity) => !entity.isPlayer && entity.entityMeshType != EntityMeshType.Farmer);
+
+        if (npc_veg.Count == 0)
+        {
+            Debug.LogError("No npc vegetables found");
+            return;
+        }
+
+        Entity target = npc_veg[Random.Range(0, npc_veg.Count)];
+
+        entity.entityMeshType = target.entityMeshType;
+        
+        entity.transform.position = target.transform.position;
+        entity.transform.rotation = target.transform.rotation;
+        Destroy(target.gameObject);
+        
+        entity.onEntityReady.Invoke(entity);
     }
 
     private void VegetablesWin()
@@ -94,7 +146,7 @@ public class GameState : MonoBehaviour
             return;
         m_DefusedMines.Add(mine);
         
-        if (MineController.Mines.Count - m_DefusedMines.Count >= DefusedMineDifferenceRequirement)
+        if (MineController.Mines.Count - m_DefusedMines.Count <= DefusedMineDifferenceRequirement)
         {
             VegetablesWin();
         }
