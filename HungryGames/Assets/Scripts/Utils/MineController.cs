@@ -1,8 +1,10 @@
+using System;
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 public class MineController : MonoBehaviour, IInteractable
 {
+    public static List<MineController> Mines { get; private set; } = new List<MineController>();
     [SerializeField] private float _interactionTimeNeeded = 10f;
     private float _currentInteractionTime = 0f;
     private float _resetRate = 0f;
@@ -10,6 +12,16 @@ public class MineController : MonoBehaviour, IInteractable
     private bool _isDefused = false;
     List<GameObject> _interactingPlayers = new();
     List<GameObject> _toBeRemovedPlayers = new();
+
+    private void Start()
+    {
+        Mines.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        Mines.Remove(this);
+    }
 
     public bool StartInteraction(GameObject player)
     {
@@ -39,6 +51,7 @@ public class MineController : MonoBehaviour, IInteractable
                     player.GetComponent<VegetableInteraction>().StopInteracting();
                 }
                 Debug.Log("done interacting!");
+                GameState.Instance.OnMineDefuse(this);
             }
         }
         else if(_currentInteractionTime > 0f)
