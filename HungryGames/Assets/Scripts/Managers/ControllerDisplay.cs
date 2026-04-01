@@ -10,7 +10,7 @@ public class ControllerDisplay : MonoBehaviour
     private List<CharacterSelection> _characterSelectionSlots = new();
     private List<PlayerMainMenu> _players = new();
     private StartTextScript _startText = null;
-    private int _controllerCount = 0;
+    private PlayerManager _playerManager = null;
     private int _nrOfPlayersReady = 0;
 
     public bool CanGoRight(int charIndex)
@@ -33,29 +33,35 @@ public class ControllerDisplay : MonoBehaviour
 
     public Transform GetNextTransform(ref int charIndex, int playerIndex)
     {
-        if (charIndex == _characterSlots.Count - 1) return GetControllerPosition(charIndex, playerIndex);
-        for (int i = charIndex + 1; i < _characterSlots.Count; ++i)
+        int tempCharIndex = charIndex;
+        if (tempCharIndex == _characterSlots.Count - 1) return GetControllerPosition(charIndex, playerIndex);
+        for (int i = tempCharIndex + 1; i < _characterSlots.Count; ++i)
         {
             if (!_characterSelectionSlots[i].HasBeenChosen)
             {
-                charIndex = i;
+                tempCharIndex = i;
                 break;
             }
         }
+        if (charIndex != tempCharIndex && charIndex != -1) _playerManager.OnCharacterChanged();
+        charIndex = tempCharIndex;
         return GetControllerPosition(charIndex, playerIndex);
     }
 
     public Transform GetPreviousTransform(ref int charIndex, int playerIndex)
     {
-        if (charIndex == 0) return GetControllerPosition(charIndex, playerIndex);
-        for (int i = charIndex - 1; i >= 0; i--)
+        int tempCharIndex = charIndex;
+        if (tempCharIndex == 0) return GetControllerPosition(charIndex, playerIndex);
+        for (int i = tempCharIndex - 1; i >= 0; i--)
         {
             if (!_characterSelectionSlots[i].HasBeenChosen)
             {
-                charIndex = i;
+                tempCharIndex = i;
                 break;
             }
         }
+        if (charIndex != tempCharIndex && charIndex != -1) _playerManager.OnCharacterChanged();
+        charIndex = tempCharIndex;
         return GetControllerPosition(charIndex, playerIndex);
     }
 
@@ -95,6 +101,7 @@ public class ControllerDisplay : MonoBehaviour
     public void AddPlayer(GameObject player)
     {
         _players.Add(player.GetComponent<PlayerMainMenu>());
+        _playerManager.OnPlayerJoined();
         _startText.PlayerInfoChanged(_nrOfPlayersReady, _players.Count);
     }
     void Start()
@@ -105,6 +112,7 @@ public class ControllerDisplay : MonoBehaviour
             _characterSelectionSlots.Add(slot.GetComponent<CharacterSelection>());
         }
         _startText = FindFirstObjectByType<StartTextScript>();
+        _playerManager = FindFirstObjectByType<PlayerManager>();
     }
 
     public void StartGame()

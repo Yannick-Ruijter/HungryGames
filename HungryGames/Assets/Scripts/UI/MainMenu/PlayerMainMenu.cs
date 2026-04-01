@@ -7,7 +7,6 @@ using TMPro;
 public class PlayerMainMenu : MonoBehaviour
 {
     static int PlayerCount = 0;
-    [SerializeField] private int _nrOfChars = 5;
     [SerializeField] private List<Color> _selectionColors = new List<Color> { Color.red, Color.green, Color.blue, Color.yellow, Color.azure };
     [SerializeField] private TextMeshProUGUI _text = null;
     [SerializeField] private GameObject _rightArrow = null;
@@ -15,6 +14,7 @@ public class PlayerMainMenu : MonoBehaviour
     public EntityMeshType _currentType = EntityMeshType.None;
     private bool _characterSelected = false;
     public bool CharacterSelected { get { return _characterSelected; } }
+    private PlayerManager _playerManager;
     private int _playerNr;
     public int SelectedCharIndex = 0;
     private ControllerDisplay _controllerDisplay = null;
@@ -33,6 +33,7 @@ public class PlayerMainMenu : MonoBehaviour
         PlayerCount++;
         _rightArrow.SetActive(_controllerDisplay.CanGoRight(SelectedCharIndex));
         _leftArrow.SetActive(_controllerDisplay.CanGoLeft(SelectedCharIndex));
+        _playerManager = FindFirstObjectByType<PlayerManager>();
     }
 
     public void NavigateMenu(InputAction.CallbackContext context )

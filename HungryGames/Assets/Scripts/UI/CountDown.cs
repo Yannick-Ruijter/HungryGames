@@ -18,7 +18,6 @@ public class CountDown : MonoBehaviour
     void Start()
     {
         _gameState.onCountDownTextUpdate.AddListener(SwapNumber);
-
     }
 
     // Update is called once per frame

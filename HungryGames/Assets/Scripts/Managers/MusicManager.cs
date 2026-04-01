@@ -18,6 +18,8 @@ public class MusicManager : MonoBehaviour
 
     private float _timeSinceLastLoop = 0;
     
+    // _menuLoop plays in the menu and transitions into gameplay music when gameplay starts
+    
     void Start()
     {
         _audioSourceOneshot = new AudioSource();
@@ -29,25 +31,29 @@ public class MusicManager : MonoBehaviour
         _audioSourceLoop.outputAudioMixerGroup = _mixerGroup;
         _audioSourceLoop.playOnAwake = false;
         _audioSourceLoop.spatialBlend = 0.0f;
+
+        DontDestroyOnLoad(gameObject);
     }
     
     void Update()
     {
-        if (_audioSourceLoop.resource == _menuLoop)
+        if (_audioSourceLoop.resource == _menuLoop) // This is the reason it's on DontDestroyOnLoad
         {
-            _timeSinceLastLoop += Time.deltaTime;
-            if (_timeSinceLastLoop >= 16f)
+            _timeSinceLastLoop += Time.deltaTime; // The time since _menuLoop last looped, lets us play _gameplayStart just when it's done
+            if (_timeSinceLastLoop >= 16f) // _menuLoop is exactly 16s long
                 _timeSinceLastLoop = 0;
         }
     }
 
-    public void PlayMenu()
+    public void PlayMenu() // Triggers when the main menu loads in. Both at the very start and after game restart.
     {
+        if (_audioSourceOneshot.resource == _endMusic)
+            StartCoroutine(FadeOut(_audioSourceOneshot));
         _audioSourceLoop.resource = _menuLoop;
         _audioSourceLoop.Play();
     }
-
-    public void PlayGameplay()
+    
+    public void PlayGameplay() // Triggers when gameplay starts
     {
         StartCoroutine(PlayGameplayFull());
     }
@@ -63,7 +69,7 @@ public class MusicManager : MonoBehaviour
         yield return null;
     }
     
-    public void PlayGameplayFast()
+    public void PlayGameplayFast() // Triggers when there's only a minute left on the counter
     {
         StartCoroutine(FadeOut(_audioSourceLoop, 1));
     }
@@ -76,14 +82,9 @@ public class MusicManager : MonoBehaviour
         yield return null;
     }
 
-    public void EndGameplay()
+    public void EndGameplay() // Triggers when someone wins
     {
         StartCoroutine(FadeOut(_audioSourceLoop, 2));
-    }
-
-    public void EndGame()
-    {
-        StartCoroutine(FadeOut(_audioSourceOneshot));
     }
     
     IEnumerator FadeOut(AudioSource audioSource, int gameState = 3, float duration = 1f)
