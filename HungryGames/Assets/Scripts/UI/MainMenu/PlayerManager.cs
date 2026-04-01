@@ -29,11 +29,11 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        SceneManager.activeSceneChanged += OnSceneSwitch;
     }
     private void Start()
     {
         if(m_PlayerInputManager != null)
+        SceneManager.activeSceneChanged += OnSceneSwitch;
         m_PlayerInputManager.onPlayerJoined += OnPlayerJoined;
     }
 
