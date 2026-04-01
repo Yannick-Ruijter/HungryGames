@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInputManager
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 3
   m_MaxPlayerCount: 5
   m_AllowJoining: 1
   m_JoinBehavior: 0
@@ -603,6 +603,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f498ccda886c74b9ce1df5322f97c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  m_PlayerInputManager: {fileID: 1236039761}
+  _vegetable: {fileID: 5001629423623839305, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+  _farmer: {fileID: 3370353137568941068, guid: 2fbc218da03e04b4182c015eec86e483, type: 3}
 --- !u!1 &1877407068
 GameObject:
   m_ObjectHideFlags: 0

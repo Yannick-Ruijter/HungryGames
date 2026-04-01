@@ -12,7 +12,7 @@ public class GameState : MonoBehaviour
 {
     public static GameState Instance { get; private set; }
 
-    [SerializeField] private PlayerManager _playerManager;
+    [SerializeField] public PlayerManager _playerManager;
 
 
     [SerializeField] private TMP_Text m_CountDownText;

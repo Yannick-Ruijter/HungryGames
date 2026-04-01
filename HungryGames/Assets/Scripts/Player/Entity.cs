@@ -12,6 +12,7 @@ public class Entity : MonoBehaviour
     public EntityMeshType entityMeshType = EntityMeshType.Farmer;
     public int lives;
     public bool isPlayer;
+    
 
     public UnityEvent onDeath = new UnityEvent();
     
@@ -30,12 +31,18 @@ public class Entity : MonoBehaviour
 
         entityMeshType = (EntityMeshType)Random.Range(1, 5);
         
-        onEntityReady.Invoke(this);
+        if(!isPlayer) onEntityReady.Invoke(this);
     }
 
     private void OnDestroy()
     {
         Entities.Remove(this);
+    }
+
+    public void AssignType(EntityMeshType type)
+    {
+        entityMeshType = type;
+        onEntityReady.Invoke(this);
     }
 
     public void TakeDamage()
