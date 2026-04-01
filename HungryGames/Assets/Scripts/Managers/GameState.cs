@@ -62,10 +62,6 @@ public class GameState : MonoBehaviour
         {
             
         }
-        else
-        {
-            
-        }
     }
 
     public void OnDamage(Entity entity)

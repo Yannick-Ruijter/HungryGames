@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour
 
     public UnityEvent onDeath = new UnityEvent();
     
-    public UnityEvent onEntityReady = new UnityEvent();
+    public UnityEvent<Entity> onEntityReady = new UnityEvent<Entity>();
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class Entity : MonoBehaviour
 
         entityMeshType = (EntityMeshType)Random.Range(1, 5);
         
-        onEntityReady.Invoke();
+        onEntityReady.Invoke(this);
     }
 
     private void OnDestroy()
