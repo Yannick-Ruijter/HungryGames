@@ -127,37 +127,21 @@ MonoBehaviour:
     m_ActionId: 0cafd9fb-9e4d-4f93-b040-0dace3d37d0c
     m_ActionName: 'UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth,/XInputControllerWindows2/buttonSouth,/XInputControllerWindows1/buttonSouth,/XInputControllerWindows3/buttonSouth]'
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6bf2a68c-bc48-4123-9ce5-ec37273f8958
-    m_ActionName: 'UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast,/XInputControllerWindows2/buttonEast,/XInputControllerWindows1/buttonEast,/XInputControllerWindows3/buttonEast]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cb41747e-5a45-42e9-b9f9-9b38a698a42b
-    m_ActionName: 'UI/Point[/Mouse/position]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 599a7289-01f5-4c17-95c6-2ec7a2f6f69c
-    m_ActionName: 'UI/Click[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c6a03269-6441-4925-be5e-8a574cbad5d2
-    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 32ba316a-2769-4776-8e01-d77fb94ea303
-    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 36f2572b-1bde-43f3-ba82-b39838774d59
-    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: faa57364-f4b6-4be3-834e-25f3b574f140
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 143e51aa-3a50-4d2f-9657-6ca5932466b6
-    m_ActionName: UI/TrackedDeviceOrientation
+      m_Calls:
+      - m_Target: {fileID: -3995269280491654674}
+        m_TargetAssemblyTypeName: PlayerMainMenu, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ba96f11e-defb-4cf3-a387-41e424ea6370
+    m_ActionName: 'UI/Start[/XInputControllerWindows2/buttonNorth,/XInputControllerWindows1/buttonNorth,/XInputControllerWindows3/buttonNorth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UI
@@ -209,7 +193,7 @@ MonoBehaviour:
   m_text: P1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c20d833a8bff7134a875056d464ddb83, type: 2}
-  m_sharedMaterial: {fileID: 6692320426597588181, guid: c20d833a8bff7134a875056d464ddb83, type: 2}
+  m_sharedMaterial: {fileID: 6171092007868323768, guid: c20d833a8bff7134a875056d464ddb83, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -312,7 +296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58.9, y: 4}
+  m_AnchoredPosition: {x: -67.3, y: 4}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3798777545902429372
@@ -387,7 +371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.2, y: 4}
+  m_AnchoredPosition: {x: 4, y: 4}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7575050039852067897
