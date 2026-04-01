@@ -5,6 +5,7 @@ public class StartTextScript : MonoBehaviour
 {
     [SerializeField] private float _flickerFrequency = 2f;
     [SerializeField] private TextMeshProUGUI _text;
+    private ControllerDisplay _display;
     private int _nrOfPlayers = 0;
     private int _nrPlayersReady = 0;
     private bool _playersReady;
@@ -13,6 +14,7 @@ public class StartTextScript : MonoBehaviour
     private void Start()
     {
         _text.text = "Press anything to join";
+        _display = FindFirstObjectByType<ControllerDisplay>();
     }
 
     public void PlayerInfoChanged(int playersSelected, int nrOfPlayers)
@@ -35,9 +37,21 @@ public class StartTextScript : MonoBehaviour
     private void ShowReady()
     {
         _textVisible = true;
-        _text.gameObject.SetActive(true);
-        _text.text = "Press North Button to start!";
-        InvokeRepeating("Flicker", _flickerFrequency, _flickerFrequency);
+        _text.gameObject.SetActive(_textVisible);
+        if (_nrOfPlayers < 2)
+        {
+            _text.text = "You need at least 2 players";
+        }
+        else if(!_display.IsFarmerPresent())
+        {
+            _text.text = "You need at least 1 farmer";
+        }
+        else
+        {
+            _text.text = "Press North Button to start!";
+            InvokeRepeating("Flicker", _flickerFrequency, _flickerFrequency);
+        }
+
     }
 
     private void Flicker()

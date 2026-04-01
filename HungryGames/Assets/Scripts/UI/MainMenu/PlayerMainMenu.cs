@@ -11,7 +11,7 @@ public class PlayerMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _text = null;
     [SerializeField] private GameObject _rightArrow = null;
     [SerializeField] private GameObject _leftArrow = null;
-    public EntityMeshType _currentType = EntityMeshType.None;
+    public EntityMeshType CurrentType = EntityMeshType.None;
     private bool _characterSelected = false;
     public bool CharacterSelected { get { return _characterSelected; } }
     private PlayerManager _playerManager;
@@ -62,7 +62,7 @@ public class PlayerMainMenu : MonoBehaviour
         if (context.started)
         {
             _characterSelected = !_characterSelected;
-            _currentType = _controllerDisplay.ToggleCharacterSelection(SelectedCharIndex, gameObject);
+            _controllerDisplay.ToggleCharacterSelection(SelectedCharIndex, this);
         }
     }
 
