@@ -106,4 +106,13 @@ public class ControllerDisplay : MonoBehaviour
         }
         _startText = FindFirstObjectByType<StartTextScript>();
     }
+
+    public void StartGame()
+    {
+        foreach(var player in _players)
+        {
+            if (!player.CharacterSelected) return;
+        }
+        FindFirstObjectByType<SceneTransition>().LoadScene();
+    }
 }

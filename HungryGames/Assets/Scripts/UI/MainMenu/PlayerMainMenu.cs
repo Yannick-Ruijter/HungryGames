@@ -78,4 +78,9 @@ public class PlayerMainMenu : MonoBehaviour
             _leftArrow.SetActive(_controllerDisplay.CanGoLeft(SelectedCharIndex));
         }
     }
+
+    public void StartGame(InputAction.CallbackContext context)
+    {
+        if (context.started) _controllerDisplay.StartGame();
+    }
 }

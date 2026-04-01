@@ -1,19 +1,83 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class FarmerVegetableCatcher : MonoBehaviour
 {
     [SerializeField] GameObject _hitTarget = null;
     private List<GameObject> _vegetablesInrange = new();
+    [SerializeField] private float _stunDelay = 0.5f;
+
+    public UnityEvent onFarmerEatPlayer = new UnityEvent();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private GameObject _closestVegetable = null;
+
+    private GameObject _captured;
+
+    private InputAction _captureAction;
+
+    private void Start()
+    {
+        _captureAction = GetComponent<PlayerInput>().actions["CaptureVegetable"];
+        _captureAction.performed += CaptureVegetable;
+    }
+
+    private void OnDestroy()
+    {
+        _captureAction.performed -= CaptureVegetable;
+    }
 
     private void Update()
     {
         if (_vegetablesInrange.Count <= 1) return;
         CalculateClosestVegetable();
     }
+
+    private void CaptureVegetable(InputAction.CallbackContext ctx)
+    {
+        if (_closestVegetable)
+        {
+            _captured = _closestVegetable;
+
+            StartCoroutine(Eating());
+        }
+    }
+
+    private IEnumerator Eating()
+    {
+        PlayerController controller = _captured.GetComponent<PlayerController>();
+
+        if (controller)
+            StartCoroutine(ApplyStun(controller));
+            
+        Entity entity = _captured.GetComponent<Entity>();
+        
+        yield return new WaitForSeconds(_stunDelay);
+        entity?.TakeDamage();
+        if (entity && !entity.isPlayer)
+        {
+            if (!entity.isPlayer)
+            {
+                GetComponent<Entity>().TakeDamage();
+            }
+            else
+            {
+                onFarmerEatPlayer.Invoke();
+            }
+        }
+    }
+
+    private IEnumerator ApplyStun(PlayerController controller)
+    {
+        controller.CanMove = false;
+        yield return new WaitForSeconds(_stunDelay);
+        controller.CanMove = true;
+    } 
 
     public void AddVegetableInRange(GameObject vegetable)
     {
