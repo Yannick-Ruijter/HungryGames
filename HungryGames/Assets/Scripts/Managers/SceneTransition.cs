@@ -14,6 +14,8 @@ public class SceneTransition : MonoBehaviour
     public UnityEvent<float> ReceiveSceneLoadingProgress = new UnityEvent<float>();
     public UnityEvent onSceneLoadComplete = new UnityEvent();
 
+    public bool IsTransitioning { get; private set; } = false;
+
     public void LoadScene()
     {
         StartCoroutine(BeginLoadScene());
@@ -21,6 +23,7 @@ public class SceneTransition : MonoBehaviour
     
     private IEnumerator BeginLoadScene()
     {
+        IsTransitioning = true;
         yield return new WaitForEndOfFrame();
         float timer = 0.0f;
         
@@ -40,6 +43,7 @@ public class SceneTransition : MonoBehaviour
 
         if (operation == null)
         {
+            IsTransitioning = false;
             throw new Exception($"Failed to load scene \"{targetSceneName}\"");
         }
 
@@ -48,11 +52,19 @@ public class SceneTransition : MonoBehaviour
         while (!operation.isDone)
         {
             ReceiveSceneLoadingProgress.Invoke(operation.progress);
+            
+            if (operation.progress >= 0.9f)
+            {
+                operation.allowSceneActivation = true;
+                Debug.Log("Starting activation");
+            }
+            
             yield return null;
         }
         
         onSceneLoadComplete.Invoke();
 
         operation.allowSceneActivation = true;
+        IsTransitioning = false;
     }
 }

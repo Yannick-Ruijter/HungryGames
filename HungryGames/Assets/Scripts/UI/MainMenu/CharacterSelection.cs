@@ -5,6 +5,7 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private List<GameObject> _playerSlots = new();
     [SerializeField] private GameObject _selectionImage;
     [SerializeField] private float _selectedSizeMultiplier = 0.9f;
+    private StartTextScript _startTextScript;
     private bool _selected = false;
     public bool HasBeenChosen { get { return _selected; } set { DoSelected(value);  _selected = value; } }
 
