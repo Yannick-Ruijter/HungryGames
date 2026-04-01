@@ -7,7 +7,6 @@ using TMPro;
 public class PlayerMainMenu : MonoBehaviour
 {
     static int PlayerCount = 0;
-    [SerializeField] private int _nrOfChars = 5;
     [SerializeField] private List<Color> _selectionColors = new List<Color> { Color.red, Color.green, Color.blue, Color.yellow, Color.azure };
     [SerializeField] private TextMeshProUGUI _text = null;
     [SerializeField] private GameObject _rightArrow = null;
