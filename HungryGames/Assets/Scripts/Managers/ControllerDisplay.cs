@@ -10,7 +10,6 @@ public class ControllerDisplay : MonoBehaviour
     private List<CharacterSelection> _characterSelectionSlots = new();
     private List<PlayerMainMenu> _players = new();
     private StartTextScript _startText = null;
-    private int _controllerCount = 0;
     private int _nrOfPlayersReady = 0;
 
     public bool CanGoRight(int charIndex)
