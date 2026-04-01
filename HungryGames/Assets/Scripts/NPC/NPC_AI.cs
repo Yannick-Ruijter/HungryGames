@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -18,17 +19,31 @@ public class NPC_AI : MonoBehaviour
         public GameObject obj;
     }
 
+    enum state
+    {
+        defusing,
+        wandering,
+        searching,
+        standing,
+    }
+
     [SerializeField] private NavMeshAgent _navAgent;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] public GameObject _bombPrefab;
     [SerializeField] public float _wanderRadius;
     [SerializeField] public float _wanderAngleChange;
+    [SerializeField] public float _diffuseTime = 5f;
+    [SerializeField] public float _fieldRadius = 10;
+    [SerializeField] public float _borderBuffer = 1;
 
     private float _wanderAngle = 0;
     float tiimer;
+    private state _state = state.wandering;
+    private bool _toBomb = false;
 
-    private GameObject[] _bombs;
+    private List<MineController> _bombs;
     private targetStruct _closestBomb = new targetStruct();
+    private float _stateTime;
 
     private bool _jump;
     private bool _canJump;
@@ -43,11 +58,14 @@ public class NPC_AI : MonoBehaviour
         tiimer = 1f;
         _wanderAngleChange = Mathf.Deg2Rad * _wanderAngleChange;
         _bombs = FindAllPrefabInstances();
+        Debug.Log(_bombs);
         _playerController.GiveMeInputElseWhere += GetControllerInput;
         NavMeshHit hit;
         NavMesh.SamplePosition(new Vector3(1, 0, 1), out hit, 100.0f, NavMesh.AllAreas);
         _navAgent.destination = hit.position;
         _navAgent.updatePosition = false;
+        _stateTime = Random.Range(0, 5.0f);
+
         //_navAgent.enabled = false;
     }
 
@@ -56,13 +74,8 @@ public class NPC_AI : MonoBehaviour
     {
         _navAgent.nextPosition = transform.position;
 
-        if (_navAgent.remainingDistance <= 2f)
-        {
-            NavMeshHit hit;
-            NavMesh.SamplePosition(new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(-5.0f, 5.0f)), out hit, 100.0f, NavMesh.AllAreas);
-            _navAgent.destination = hit.position;
-        }
         tiimer -= Time.deltaTime;
+
         if (tiimer < 0)
         {
             if(_canJump) _jump = true;
@@ -70,9 +83,73 @@ public class NPC_AI : MonoBehaviour
             ChangeDirction();
         }
 
+        // seek 20 percent towards a bomb, stand still, repeat
 
-        _controllerInput.move = GetCombinedDir();
-        _controllerInput.jump = _jump;
+        switch(_state)
+        {
+            case state.wandering:
+                {
+                    _stateTime -= Time.deltaTime;
+                    if (_stateTime <= 0)
+                    {
+                        if(Random.Range(0f, 5f) > 1)
+                        {
+                            _navAgent.destination = RandomNavMeshLocation();
+                            _toBomb = false;
+                        }
+                        else
+                        {
+                            CalcClosestBomb();
+                            _navAgent.destination = _closestBomb.obj.transform.position;
+                            _toBomb = true;
+                        }
+                        _state = state.searching;
+                    }
+                    _controllerInput.move = GetWanderDir();
+                    _controllerInput.jump = _jump;
+                    break;
+                }
+            case state.defusing:
+                {
+                    _controllerInput.move = new Vector2();
+                    _controllerInput.jump = false;
+                    _stateTime -= Time.deltaTime;
+                    if(_stateTime <= 0)
+                    {
+                        _stateTime = Random.Range(1f, _diffuseTime);
+                        _state = state.wandering;
+                    }
+                    break;
+                }
+            case state.standing:
+                {
+                    // same as diffusing but might be diferent due to animations
+                    _controllerInput.move = new Vector2();
+                    _controllerInput.jump = false;
+                    _stateTime -= Time.deltaTime;
+                    if (_stateTime <= 0)
+                    {
+                        _stateTime = Random.Range(1f, _diffuseTime);
+                        _state = state.wandering;
+                    }
+                    break;
+                }
+            case state.searching:
+                {
+                    if (_navAgent.remainingDistance <= 2f)
+                    {
+                        if (_toBomb)
+                            _state = state.defusing;
+                        else _state = state.standing;
+                            _stateTime = Random.Range(0, 10.0f);
+                    }
+                    _controllerInput.move = GetCombinedDir();
+                    _controllerInput.jump = _jump;
+                    break;
+                }
+        }
+            
+        
     }
 
     private void FixedUpdate()
@@ -87,9 +164,10 @@ public class NPC_AI : MonoBehaviour
         return _controllerInput;
     }
 
-    private GameObject[] FindAllPrefabInstances()
+    private List<MineController> FindAllPrefabInstances()
     {
-        return PrefabUtility.FindAllInstancesOfPrefab(_bombPrefab, SceneManager.GetActiveScene());
+        return FindObjectsByType<MineController>(FindObjectsSortMode.None).ToList();
+        //return PrefabUtility.FindAllInstancesOfPrefab(_bombPrefab, SceneManager.GetActiveScene());
     }
 
     private Vector2 GetCombinedDir()
@@ -127,7 +205,18 @@ public class NPC_AI : MonoBehaviour
         Vector3 dir =  quat * Vector3.forward ;
         //Debug.DrawRay(transform.position, transform.forward, Color.blue);
         //Debug.DrawRay(transform.position, dir, Color.red);
+
+        if(transform.position.magnitude > _fieldRadius - _borderBuffer)
+        {
+            Debug.Log("border");
+            dir += -transform.position.normalized * 2f;
+        }
+
+
         dir.Normalize();
+
+
+
         return new Vector2(dir.x, dir.z);
         
         //Vector2 direction = new Vector2(transform.forward.x, transform.forward.z);
@@ -146,17 +235,31 @@ public class NPC_AI : MonoBehaviour
     {
         float closestDistance = -1;
         GameObject closest = null;
-        foreach(GameObject bomb in _bombs)
+        foreach(var bomb in _bombs)
         {
+            Debug.Log("testing bomb");
             float distance = Vector3.Distance(transform.position, bomb.transform.position);
             if (closestDistance > distance || closestDistance < 0)
             {
-                closest = bomb;
+                closest = bomb.gameObject;
                 closestDistance = distance;
             }
         }
         _closestBomb.obj = closest;
         _closestBomb.distace = closestDistance;
+    }
+
+    public Vector3 RandomNavMeshLocation()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * _fieldRadius;
+        //randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, _fieldRadius, 1))
+        {
+            finalPosition = hit.position;
+        }
+        return finalPosition;
     }
 
 }
