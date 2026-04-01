@@ -18,7 +18,7 @@ public class GameState : MonoBehaviour
 
     private Stage m_GameStage = Stage.BeforeStart;
 
-    public int CountdownTime = 3;
+    [SerializeField] public int CountdownTime = 3;
 
     [Tooltip("Round time in seconds.")]
     public float RoundTime = 300.0f;
