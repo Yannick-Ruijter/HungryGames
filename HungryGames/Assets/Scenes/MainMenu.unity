@@ -278,7 +278,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c20d833a8bff7134a875056d464ddb83, type: 2}
-  m_sharedMaterial: {fileID: 6692320426597588181, guid: c20d833a8bff7134a875056d464ddb83, type: 2}
+  m_sharedMaterial: {fileID: 6171092007868323768, guid: c20d833a8bff7134a875056d464ddb83, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -844,6 +844,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 148235687508837512, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}
+      propertyPath: _charType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 148235687508837512, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}
       propertyPath: _selectionImage
       value: 
       objectReference: {fileID: 6987526597256733714}
@@ -936,6 +940,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5358016258037517778, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}
+      propertyPath: _charType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358016258037517778, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}
       propertyPath: _selectionImage
       value: 
       objectReference: {fileID: 754105570}
@@ -943,6 +951,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1226560793}
+    - target: {fileID: 7184957237433838959, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}
+      propertyPath: _charType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7184957237433838959, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}
       propertyPath: _selectionImage
       value: 
@@ -954,6 +966,10 @@ PrefabInstance:
     - target: {fileID: 8339986661143436181, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}
       propertyPath: m_Name
       value: MainMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497952620045800672, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}
+      propertyPath: _charType
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8497952620045800672, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}
       propertyPath: _selectionImage

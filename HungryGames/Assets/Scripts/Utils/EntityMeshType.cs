@@ -4,5 +4,7 @@ public enum EntityMeshType
     Potato,
     Tomato,
     Carrot,
-    Lettuce
+    Lettuce,
+
+    None
 }

@@ -64,7 +64,7 @@ public class ControllerDisplay : MonoBehaviour
         return _characterSelectionSlots[characterIndex].GetSlotTransform(playerIndex);
     }
 
-    public void ToggleCharacterSelection(int characterIndex, GameObject player)
+    public EntityMeshType ToggleCharacterSelection(int characterIndex, GameObject player)
     {
         _characterSelectionSlots[characterIndex].HasBeenChosen = !_characterSelectionSlots[characterIndex].HasBeenChosen;
         PlayerMainMenu senderUiPlayer = player.GetComponent<PlayerMainMenu>();
@@ -73,7 +73,7 @@ public class ControllerDisplay : MonoBehaviour
             _nrOfPlayersReady--;
             _startText.PlayerInfoChanged(_nrOfPlayersReady, _players.Count);
             foreach (var p in _players) p.UpdateArrows();
-            return;
+            return EntityMeshType.None;
         }
         _nrOfPlayersReady++;
         _startText.PlayerInfoChanged(_nrOfPlayersReady, _players.Count);
@@ -89,6 +89,7 @@ public class ControllerDisplay : MonoBehaviour
             }
             _players[i].gameObject.transform.position = tempTransform.position;
         }
+        return _characterSelectionSlots[characterIndex].CharType;
     }
 
     public void AddPlayer(GameObject player)
