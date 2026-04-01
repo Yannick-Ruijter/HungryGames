@@ -7,15 +7,19 @@ public class MineController : MonoBehaviour, IInteractable
     public static List<MineController> Mines { get; private set; } = new List<MineController>();
     [SerializeField] private float _interactionTimeNeeded = 10f;
     private float _currentInteractionTime = 0f;
-    private float _resetRate = 0f;
+    [SerializeField] private float _resetRate = 1f;
     private int _nrOfPlayersInteracting = 0;
     private bool _isDefused = false;
     List<GameObject> _interactingPlayers = new();
     List<GameObject> _toBeRemovedPlayers = new();
+    [SerializeField] public Renderer _renderer;
+    List<Material> _materials = new List<Material>();
 
     private void Start()
     {
         Mines.Add(this);
+        _renderer.GetMaterials(_materials);
+        Debug.Log(_materials);
     }
 
     private void OnDestroy()
@@ -40,8 +44,10 @@ public class MineController : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-        if(_nrOfPlayersInteracting > 0)
+        bool changeMat = false;
+        if (_nrOfPlayersInteracting > 0)
         {
+            changeMat = true;
             _currentInteractionTime += Time.deltaTime * _nrOfPlayersInteracting;
             if (_currentInteractionTime >= _interactionTimeNeeded && !_isDefused)
             {
@@ -54,12 +60,22 @@ public class MineController : MonoBehaviour, IInteractable
                 GameState.Instance.OnMineDefuse(this);
             }
         }
-        else if(_currentInteractionTime > 0f)
+        else if (_currentInteractionTime > 0f)
         {
+            changeMat = true;
             _currentInteractionTime -= Time.deltaTime * _resetRate;
             if (_currentInteractionTime < 0f) _currentInteractionTime = 0f;
         }
-        if(_toBeRemovedPlayers.Count > 0)
+
+        // if he's not diffused and the value changed, update material
+        if (changeMat && !_isDefused)
+        {
+            Debug.Log("changing");
+            Debug.Log(_currentInteractionTime);
+            _materials[2].SetFloat("_time", _currentInteractionTime/ _interactionTimeNeeded);
+        }
+
+        if (_toBeRemovedPlayers.Count > 0)
         {
             foreach (var player in _toBeRemovedPlayers)
             {
