@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!m_PlayerInput)
+        if (!m_HasInput)
             return;
         
         Vector2 moveInput = GetMoveInput();
