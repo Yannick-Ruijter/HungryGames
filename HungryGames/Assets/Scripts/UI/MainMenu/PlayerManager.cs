@@ -65,21 +65,21 @@ public class PlayerManager : MonoBehaviour
 
     //}
 
-    //public void SpawnPlayers()
-    //{
-    //    foreach (var player in players)
-    //    {
-    //        GameObject prefab = player.type == EntityMeshType.Farmer
-    //            ? _farmer
-    //            : _vegetable;
+    public void SpawnPlayers()
+    {
+        foreach (var player in players)
+        {
+            GameObject prefab = player.type == EntityMeshType.Farmer
+                ? _farmer
+                : _vegetable;
 
-    //        PlayerInput.Instantiate(
-    //            prefab,
-    //            controlScheme: "Gamepad",
-    //            pairWithDevice: player.device
-    //        );
-    //    }
-    //}
+            PlayerInput.Instantiate(
+                prefab,
+                controlScheme: "Gamepad",
+                pairWithDevice: player.device
+            );
+        }
+    }
 
     public void OnCharacterSelected()
     {
