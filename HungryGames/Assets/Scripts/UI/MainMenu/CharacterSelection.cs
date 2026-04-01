@@ -7,13 +7,14 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private float _selectedSizeMultiplier = 0.9f;
     [SerializeField] private EntityMeshType _charType;
     public EntityMeshType CharType { get { return _charType; } }
-    private StartTextScript _startTextScript;
+    private PlayerManager _playerManager;
     private bool _selected = false;
     public bool HasBeenChosen { get { return _selected; } set { DoSelected(value);  _selected = value; } }
 
     private void Start()
     {
         _selectionImage.SetActive(false);
+        _playerManager = FindFirstObjectByType<PlayerManager>();
     }
     public Transform GetSlotTransform(int playerIndex)
     {
@@ -28,11 +29,13 @@ public class CharacterSelection : MonoBehaviour
         {
             _selectionImage.SetActive(true);
             gameObject.transform.localScale *= _selectedSizeMultiplier;
+            _playerManager.OnCharacterSelected();
         }
         else
         {
             _selectionImage.SetActive(false);
             gameObject.transform.localScale /= _selectedSizeMultiplier;
+            _playerManager.OnCharacterDeselected();
         }
     }
 }
