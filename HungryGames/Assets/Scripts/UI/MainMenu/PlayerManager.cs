@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        //SceneManager.activeSceneChanged += OnSceneSwitch;
+        SceneManager.activeSceneChanged += OnSceneSwitch;
     }
     private void Start()
     {
@@ -41,6 +41,7 @@ public class PlayerManager : MonoBehaviour
     {
         var data = new PlayerData
         {
+            user = playerInput.user,
             device = playerInput.devices[0],
             type = playerInput.GetComponent<PlayerMainMenu>()._currentType,
             playerIndex = playerInput.playerIndex
@@ -51,24 +52,26 @@ public class PlayerManager : MonoBehaviour
         FindFirstObjectByType<ControllerDisplay>().AddPlayer(playerInput.gameObject);
     }
 
-    //private void OnSceneSwitch(Scene arg0, Scene arg1)
-    //{
-    //    Debug.Log("hi");
-    //    //m_PlayerInputManager\
-    //    //p.pl
-    //    Debug.Log(players);
-    //    foreach (var player in players)
-    //    {
-    //        Debug.Log(player);
-    //    }
-    //    FindAnyObjectByType<GameState>()._playerManager = this;
+    private void OnSceneSwitch(Scene arg0, Scene arg1)
+    {
+        Debug.Log("hi");
+        //m_PlayerInputManager\
+        //p.pl
+        Debug.Log(players);
+        foreach (var player in players)
+        {
+            Debug.Log(player);
+        }
+        FindAnyObjectByType<GameState>()._playerManager = this;
 
-    //}
+    }
 
     public void SpawnPlayers()
     {
+        
         foreach (var player in players)
         {
+            Debug.Log(player);
             GameObject prefab = player.type == EntityMeshType.Farmer
                 ? _farmer
                 : _vegetable;
