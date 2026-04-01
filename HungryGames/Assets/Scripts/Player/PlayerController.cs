@@ -46,8 +46,11 @@ public class PlayerController : MonoBehaviour
         
         _camera = Camera.main;
         
-        m_MoveInput = m_PlayerInput.actions["Move"];
-        m_JumpInput = m_PlayerInput.actions["Jump"];
+        if (m_PlayerInput)
+        {
+            m_MoveInput = m_PlayerInput.actions["Move"];
+            m_JumpInput = m_PlayerInput.actions["Jump"];
+        }
     }
 
     private Vector2 GetMoveInput()
