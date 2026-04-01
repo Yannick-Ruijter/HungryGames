@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Entity : MonoBehaviour
@@ -10,6 +11,8 @@ public class Entity : MonoBehaviour
     public bool isPlayer;
 
     public UnityEvent onDeath = new UnityEvent();
+    
+    public UnityEvent onEntityReady = new UnityEvent();
 
     private void Start()
     {
@@ -17,6 +20,8 @@ public class Entity : MonoBehaviour
             return;
 
         entityMeshType = (EntityMeshType)Random.Range(1, 5);
+        
+        onEntityReady.Invoke();
     }
 
     private void OnDestroy()
