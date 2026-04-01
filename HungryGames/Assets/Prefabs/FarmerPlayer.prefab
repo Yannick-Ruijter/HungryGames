@@ -227,6 +227,9 @@ PrefabInstance:
       addedObject: {fileID: 6664685020284970921}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6055015292429049394, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: -5749251658527324257}
+    - targetCorrespondingSourceObject: {fileID: 6055015292429049394, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9003613104578231186}
   m_SourcePrefab: {fileID: 100100000, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
@@ -240,6 +243,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6055015292429049394, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
   m_PrefabInstance: {fileID: 8845731580642138686}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-5749251658527324257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3370353137568941068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67842877c6fc044daff2067e383cefa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity
+  entityMeshType: 0
+  lives: 3
+  isPlayer: 1
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onEntityReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9003613104578231186
 MonoBehaviour:
   m_ObjectHideFlags: 0
