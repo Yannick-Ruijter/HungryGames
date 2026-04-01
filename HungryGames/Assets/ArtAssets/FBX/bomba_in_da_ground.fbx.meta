@@ -3,7 +3,27 @@ guid: 7886ce1e0e8b11c4d89b87d6f927f99c
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bomba_M.003
+    second: {fileID: 2100000, guid: 9ad0e0aabb242dc4ea588696b5f97060, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Defuse_M.003
+    second: {fileID: 2100000, guid: 052cd96ae33e97e4f97848240cef18e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nose_M.003
+    second: {fileID: 2100000, guid: 96ec3cbab7e20ad49ade6f2867850927, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scarecrow_m
+    second: {fileID: 2100000, guid: c864926ead5fc3c4c8694f57c0322ed5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
