@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,7 @@ public struct ControllerInput
 
 public class PlayerController : MonoBehaviour
 {
+    public static List<PlayerController> Controllers { get; private set; } = new List<PlayerController>();
     [SerializeField] private PlayerInput m_PlayerInput;
     [SerializeField] private CapsuleCollider m_SolidCollider;
     [SerializeField] private CapsuleCollider m_TriggerCollider;
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 m_Direction = Vector3.zero;
 
     private bool m_IsGrounded = false;
+
+    public bool CanMove = true;
     
     private bool m_HasInput
     {
@@ -41,6 +45,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        Controllers.Add(this);
         if (!m_PlayerInput)
             m_PlayerInput = GetComponent<PlayerInput>();
         
@@ -51,6 +56,11 @@ public class PlayerController : MonoBehaviour
             m_MoveInput = m_PlayerInput.actions["Move"];
             m_JumpInput = m_PlayerInput.actions["Jump"];
         }
+    }
+
+    private void OnDestroy()
+    {
+        Controllers.Remove(this);
     }
 
     private Vector2 GetMoveInput()
@@ -70,6 +80,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        if (!CanMove)
+            return;
         if (GiveMeInputElseWhere != null)
         {
             m_ControllerInput = GiveMeInputElseWhere.Invoke();
@@ -84,6 +96,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!CanMove)
+            return;
         if (!m_HasInput)
             return;
         
