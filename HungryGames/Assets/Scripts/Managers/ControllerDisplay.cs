@@ -70,24 +70,24 @@ public class ControllerDisplay : MonoBehaviour
         return _characterSelectionSlots[characterIndex].GetSlotTransform(playerIndex);
     }
 
-    public EntityMeshType ToggleCharacterSelection(int characterIndex, GameObject player)
+    public void ToggleCharacterSelection(int characterIndex, PlayerMainMenu player)
     {
         _characterSelectionSlots[characterIndex].HasBeenChosen = !_characterSelectionSlots[characterIndex].HasBeenChosen;
-        PlayerMainMenu senderUiPlayer = player.GetComponent<PlayerMainMenu>();
         if (!_characterSelectionSlots[characterIndex].HasBeenChosen)
         {
             _nrOfPlayersReady--;
             _startText.PlayerInfoChanged(_nrOfPlayersReady, _players.Count);
             foreach (var p in _players) p.UpdateArrows();
-            return EntityMeshType.None;
+            return;
         }
         _nrOfPlayersReady++;
+        player.CurrentType = _characterSelectionSlots[characterIndex].CharType;
         _startText.PlayerInfoChanged(_nrOfPlayersReady, _players.Count);
         for (int i = 0; i < _players.Count; i++)
         {
             _players[i].UpdateArrows();
-            if (player == _players[i].gameObject) continue;
-            if (_players[i].SelectedCharIndex != senderUiPlayer.SelectedCharIndex) continue;
+            if (player == _players[i]) continue;
+            if (_players[i].SelectedCharIndex != player.SelectedCharIndex) continue;
             Transform tempTransform = GetNextTransform(ref _players[i].SelectedCharIndex, i);
             if (player.transform.position == tempTransform.position)
             {
@@ -95,7 +95,7 @@ public class ControllerDisplay : MonoBehaviour
             }
             _players[i].gameObject.transform.position = tempTransform.position;
         }
-        return _characterSelectionSlots[characterIndex].CharType;
+        return;
     }
 
     public void AddPlayer(GameObject player)
@@ -117,10 +117,24 @@ public class ControllerDisplay : MonoBehaviour
 
     public void StartGame()
     {
-        foreach(var player in _players)
+        if (_nrOfPlayersReady < 2) return;
+        List<EntityMeshType> _charsFound = new();
+        foreach (var player in _players)
         {
+            _charsFound.Add(player.CurrentType);
             if (!player.CharacterSelected) return;
         }
+        if (_charsFound.Contains(EntityMeshType.Farmer)) return;
         FindFirstObjectByType<SceneTransition>().LoadScene();
+    }
+
+    public bool IsFarmerPresent()
+    {
+        List<EntityMeshType> _charsFound = new();
+        foreach (var player in _players)
+        {
+            _charsFound.Add(player.CurrentType);
+        }
+        return _charsFound.Contains(EntityMeshType.Farmer);
     }
 }

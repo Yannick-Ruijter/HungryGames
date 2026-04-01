@@ -3,7 +3,32 @@ guid: f5fd412d8e57b2e4182d71e7599957da
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_M
+    second: {fileID: 2100000, guid: be8a01ff925412d478695f18435699a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: corn_M_v2.001
+    second: {fileID: 2100000, guid: de8257c80b9d75043a90da856aa9beb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scarecrow_m
+    second: {fileID: 2100000, guid: c864926ead5fc3c4c8694f57c0322ed5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scarecrow_m.002
+    second: {fileID: 2100000, guid: c864926ead5fc3c4c8694f57c0322ed5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scarecrow_m.003
+    second: {fileID: 2100000, guid: c864926ead5fc3c4c8694f57c0322ed5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

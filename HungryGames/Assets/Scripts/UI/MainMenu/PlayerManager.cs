@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviour
         {
             user = playerInput.user,
             device = playerInput.devices[0],
-            type = playerInput.GetComponent<PlayerMainMenu>()._currentType,
+            type = playerInput.GetComponent<PlayerMainMenu>().CurrentType,
             playerIndex = playerInput.playerIndex
         };
 
