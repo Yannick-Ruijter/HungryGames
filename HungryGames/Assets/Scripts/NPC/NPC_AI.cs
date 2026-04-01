@@ -1,13 +1,18 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.AI.Navigation;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Shaders;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+using static UnityEngine.Rendering.DebugUI;
 
 
 
@@ -30,14 +35,29 @@ public class NPC_AI : MonoBehaviour
     [SerializeField] private NavMeshAgent _navAgent;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] public GameObject _bombPrefab;
-    [SerializeField] public float _wanderRadius;
-    [SerializeField] public float _wanderAngleChange;
-    [SerializeField] public float _diffuseTime = 5f;
+    [Header("bounds")]
     [SerializeField] public float _fieldRadius = 10;
     [SerializeField] public float _borderBuffer = 1;
 
+    [Header("behaviour")]
+    [SerializeField] public float _minswitchTime = 0;
+    [SerializeField] public float _maxswitchTime = 0;
+    [Header("jumping")]
+    [SerializeField] public float _minJumpTime = 0;
+    [SerializeField] public float _maxJumpTime = 3;
+    [Header("wander")]
+    [SerializeField] public float _wanderRadius;
+    [SerializeField] public float _wanderAngleChange;
+    [SerializeField] public float _minwanderTime = 0f;
+    [SerializeField] public float _maxwanderTime = 5f;
+    [Header("diffusing")]
+    [SerializeField] public float _maxDiffuseTime = 5f;
+    [SerializeField] public int _maxDiffuseChance = 5;
+
+    
+
     private float _wanderAngle = 0;
-    float tiimer;
+    float _changeBehaviourTimer;
     private state _state = state.wandering;
     private bool _toBomb = false;
 
@@ -47,6 +67,7 @@ public class NPC_AI : MonoBehaviour
 
     private bool _jump;
     private bool _canJump;
+    private float _jumpTimer;
 
     private Vector3 _velocity;
     private ControllerInput _controllerInput;
@@ -55,8 +76,7 @@ public class NPC_AI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        tiimer = 1f;
-        _wanderAngleChange = Mathf.Deg2Rad * _wanderAngleChange;
+        _changeBehaviourTimer = 1f;
         _bombs = FindAllPrefabInstances();
         Debug.Log(_bombs);
         _playerController.GiveMeInputElseWhere += GetControllerInput;
@@ -64,7 +84,8 @@ public class NPC_AI : MonoBehaviour
         NavMesh.SamplePosition(new Vector3(1, 0, 1), out hit, 100.0f, NavMesh.AllAreas);
         _navAgent.destination = hit.position;
         _navAgent.updatePosition = false;
-        _stateTime = Random.Range(0, 5.0f);
+        _stateTime = UnityEngine.Random.Range(0, 5.0f);
+        _jumpTimer = UnityEngine.Random.Range(_minJumpTime, _maxJumpTime);
 
         //_navAgent.enabled = false;
     }
@@ -74,87 +95,154 @@ public class NPC_AI : MonoBehaviour
     {
         _navAgent.nextPosition = transform.position;
 
-        tiimer -= Time.deltaTime;
+        _changeBehaviourTimer -= Time.deltaTime;
 
-        if (tiimer < 0)
+        if (_changeBehaviourTimer < 0)
         {
-            if(_canJump) _jump = true;
-            tiimer = 1f;
-            ChangeDirction();
+            _changeBehaviourTimer = UnityEngine.Random.Range(_minswitchTime, _maxswitchTime);
+            _state = (state)UnityEngine.Random.Range(0f, 5);
+        }
+        _jumpTimer -= Time.deltaTime;
+        if (_jumpTimer <= 0)
+        {
+            if (_canJump) _jump = true;
+            _jumpTimer = UnityEngine.Random.Range(_minJumpTime, _maxJumpTime);
         }
 
         // seek 20 percent towards a bomb, stand still, repeat
 
-        switch(_state)
+
+        switch (_state)
         {
             case state.wandering:
                 {
-                    _stateTime -= Time.deltaTime;
-                    if (_stateTime <= 0)
-                    {
-                        if(Random.Range(0f, 5f) > 1)
-                        {
-                            _navAgent.destination = RandomNavMeshLocation();
-                            _toBomb = false;
-                        }
-                        else
-                        {
-                            CalcClosestBomb();
-                            _navAgent.destination = _closestBomb.obj.transform.position;
-                            _toBomb = true;
-                        }
-                        _state = state.searching;
-                    }
-                    _controllerInput.move = GetWanderDir();
-                    _controllerInput.jump = _jump;
+                    WanderBehaviour();
                     break;
                 }
             case state.defusing:
                 {
-                    _controllerInput.move = new Vector2();
-                    _controllerInput.jump = false;
-                    _stateTime -= Time.deltaTime;
-                    if(_stateTime <= 0)
-                    {
-                        _stateTime = Random.Range(1f, _diffuseTime);
-                        _state = state.wandering;
-                    }
+                    DiffuseBehaviour();
                     break;
                 }
             case state.standing:
                 {
-                    // same as diffusing but might be diferent due to animations
-                    _controllerInput.move = new Vector2();
-                    _controllerInput.jump = false;
-                    _stateTime -= Time.deltaTime;
-                    if (_stateTime <= 0)
-                    {
-                        _stateTime = Random.Range(1f, _diffuseTime);
-                        _state = state.wandering;
-                    }
+                    StandingBehaviour();
                     break;
                 }
             case state.searching:
                 {
-                    if (_navAgent.remainingDistance <= 2f)
-                    {
-                        if (_toBomb)
-                            _state = state.defusing;
-                        else _state = state.standing;
-                            _stateTime = Random.Range(0, 10.0f);
-                    }
-                    _controllerInput.move = GetCombinedDir();
-                    _controllerInput.jump = _jump;
+                    SearchBehaviour();
                     break;
                 }
         }
-            
-        
+
+        if (transform.position.magnitude > _fieldRadius - _borderBuffer)
+        {
+            _controllerInput.move = new Vector2(-transform.position.normalized.x, -transform.position.normalized.z) ;
+
+        }
+
+    }
+
+    public void SwitchToSearch()
+    {
+        if (UnityEngine.Random.Range(0f, 5f) > 1)
+        {
+            _navAgent.destination = RandomNavMeshLocation();
+            _toBomb = false;
+        }
+        else
+        {
+            CalcClosestBomb();
+            _navAgent.destination = _closestBomb.obj.transform.position;
+            _toBomb = true;
+        }
+        _state = state.searching;
+    }
+    public void SearchBehaviour()
+    {
+        if (_navAgent.remainingDistance <= 2f)
+        {
+            SwitchToStation();
+        }
+        _controllerInput.move = GetCombinedDir();
+        _controllerInput.jump = _jump;
+    }
+
+    void SwitchToStation()
+    {
+        int min = 0;
+        int max = _maxDiffuseChance;
+        if (_toBomb)
+        {
+            max = _maxDiffuseChance - 2;
+        }
+        if (UnityEngine.Random.Range(min, max) > 1)
+        {
+            _state = state.standing;
+        }
+        else
+        {
+            _state = state.defusing;
+        }
+        _stateTime = UnityEngine.Random.Range(0, _maxDiffuseTime);
+    }
+
+    public void DiffuseBehaviour()
+    {
+        _controllerInput.move = new Vector2();
+        _controllerInput.jump = false;
+        _stateTime -= Time.deltaTime;
+        if (_stateTime <= 0)
+        {
+            SwitchToWander();
+        }
+    }
+
+    public void StandingBehaviour()
+    {
+        // same as diffusing but might be diferent due to animations
+        _controllerInput.move = new Vector2();
+        _controllerInput.jump = false;
+        _stateTime -= Time.deltaTime;
+        if (_stateTime <= 0)
+        {
+            SwitchToWander();
+        }
+    }
+
+    void SwitchToWander()
+    {
+        _stateTime = UnityEngine.Random.Range(_minwanderTime, _maxwanderTime);
+        _state = state.wandering;
+    }
+
+    public void WanderBehaviour()
+    {
+        _stateTime -= Time.deltaTime;
+        if (_stateTime <= 0)
+        {
+            if (UnityEngine.Random.Range(0f, 5f) > 1)
+            {
+                _navAgent.destination = RandomNavMeshLocation();
+                _toBomb = false;
+            }
+            else
+            {
+                CalcClosestBomb();
+                _navAgent.destination = _closestBomb.obj.transform.position;
+                _toBomb = true;
+            }
+            _state = state.searching;
+        }
+        _controllerInput.move = GetWanderDir();
+        _controllerInput.jump = _jump;
     }
 
     private void FixedUpdate()
     {
         _canJump = true;
+        _jump = false;
     }
 
 
@@ -182,41 +270,41 @@ public class NPC_AI : MonoBehaviour
 
     private void ChangeDirction()
     {
-        _wanderAngle += Random.Range(-_wanderAngleChange, _wanderAngleChange);
+        _wanderAngle += UnityEngine.Random.Range(-_wanderAngleChange, _wanderAngleChange);
 
         //Debug.Log(Mathf.Rad2Deg * _wanderAngle);
 
-        if (_wanderAngle > Mathf.PI)
+        if (_wanderAngle > 180)// Mathf.PI)
         {
             _wanderAngle -= 2f * Mathf.PI;
         }
-        if (_wanderAngle < -Mathf.PI)
+        if (_wanderAngle < -180)//-Mathf.PI)
         {
             _wanderAngle += 2f * Mathf.PI;
         }
     }
-
+    /**/
     private Vector2 GetWanderDir()
     {
-        Quaternion quat = Quaternion.Euler(0f, Mathf.Rad2Deg * _wanderAngle, 0f);
+        ChangeDirction();
+        Quaternion quat = Quaternion.Euler(0f, _wanderAngle, 0f);
 
         
         //Debug.Log(_wanderAngle);
-        Vector3 dir =  quat * Vector3.forward ;
-        //Debug.DrawRay(transform.position, transform.forward, Color.blue);
-        //Debug.DrawRay(transform.position, dir, Color.red);
+        Vector3 dir =  quat * transform.forward ;
 
-        if(transform.position.magnitude > _fieldRadius - _borderBuffer)
-        {
-            Debug.Log("border");
-            dir += -transform.position.normalized * 2f;
-        }
+
+        
 
 
         dir.Normalize();
 
+        //Debug.Log(dir);
 
+        Debug.DrawRay(transform.position, transform.forward, Color.blue);
+        Debug.DrawRay(transform.position, dir, Color.red);
 
+        //return new Vector2(0, 1);
         return new Vector2(dir.x, dir.z);
         
         //Vector2 direction = new Vector2(transform.forward.x, transform.forward.z);
@@ -251,7 +339,7 @@ public class NPC_AI : MonoBehaviour
 
     public Vector3 RandomNavMeshLocation()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * _fieldRadius;
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * _fieldRadius;
         //randomDirection += transform.position;
         NavMeshHit hit;
         Vector3 finalPosition = Vector3.zero;
