@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907c26540ae631c44baf0a9fa929c272, type: 3}
   m_Name: SFX_Vegetables_Jump_Potato_A
   m_EditorClassIdentifier: Assembly-CSharp::SoundEffect
-  clip: {fileID: 8300000, guid: 9ef1e79c3e25d084590894891ed230ba, type: 3}
+  clip: {fileID: 6418180475301049370, guid: 5cfb31be23e3a5245b81174802b25857, type: 2}
   sampleClip: {fileID: 8300000, guid: 9ef1e79c3e25d084590894891ed230ba, type: 3}
   pitch: 0
   volume: 1
