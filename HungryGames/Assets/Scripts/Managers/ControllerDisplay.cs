@@ -8,8 +8,28 @@ public class ControllerDisplay : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private List<GameObject> _characterSlots = new();
     private List<CharacterSelection> _characterSelectionSlots = new();
-    private List<GameObject> _players = new();
-    private int _controllerCount = 0;   
+    private List<PlayerMainMenu> _players = new();
+    private StartTextScript _startText = null;
+    private int _controllerCount = 0;
+    private int _nrOfPlayersReady = 0;
+
+    public bool CanGoRight(int charIndex)
+    {
+        for(int i = charIndex + 1; i < _characterSelectionSlots.Count; i++)
+        {
+            if (!_characterSelectionSlots[i].HasBeenChosen) return true;
+        }
+        return false;
+    }
+
+    public bool CanGoLeft(int charIndex)
+    {
+        for (int i = charIndex - 1; i >= 0; i--)
+        {
+            if (!_characterSelectionSlots[i].HasBeenChosen) return true;
+        }
+        return false;
+    }
 
     public Transform GetNextTransform(ref int charIndex, int playerIndex)
     {
@@ -48,24 +68,33 @@ public class ControllerDisplay : MonoBehaviour
     {
         _characterSelectionSlots[characterIndex].HasBeenChosen = !_characterSelectionSlots[characterIndex].HasBeenChosen;
         PlayerMainMenu senderUiPlayer = player.GetComponent<PlayerMainMenu>();
-        if (!_characterSelectionSlots[characterIndex].HasBeenChosen) return;
-        for(int i = 0; i < _players.Count; i++)
+        if (!_characterSelectionSlots[characterIndex].HasBeenChosen)
         {
-            if (player == _players[i]) continue;
-            PlayerMainMenu currentUiPlayer = _players[i].GetComponent<PlayerMainMenu>();
-            if (currentUiPlayer.SelectedCharIndex != senderUiPlayer.SelectedCharIndex) return;
-            Transform tempTransform = GetNextTransform(ref currentUiPlayer.SelectedCharIndex, i);
+            _nrOfPlayersReady--;
+            _startText.PlayerInfoChanged(_nrOfPlayersReady, _players.Count);
+            foreach (var p in _players) p.UpdateArrows();
+            return;
+        }
+        _nrOfPlayersReady++;
+        _startText.PlayerInfoChanged(_nrOfPlayersReady, _players.Count);
+        for (int i = 0; i < _players.Count; i++)
+        {
+            _players[i].UpdateArrows();
+            if (player == _players[i].gameObject) continue;
+            if (_players[i].SelectedCharIndex != senderUiPlayer.SelectedCharIndex) continue;
+            Transform tempTransform = GetNextTransform(ref _players[i].SelectedCharIndex, i);
             if (player.transform.position == tempTransform.position)
             {
-                tempTransform = GetPreviousTransform(ref currentUiPlayer.SelectedCharIndex, i);
+                tempTransform = GetPreviousTransform(ref _players[i].SelectedCharIndex, i);
             }
-            _players[i].transform.position = tempTransform.position;
+            _players[i].gameObject.transform.position = tempTransform.position;
         }
     }
 
     public void AddPlayer(GameObject player)
     {
-        _players.Add(player);
+        _players.Add(player.GetComponent<PlayerMainMenu>());
+        _startText.PlayerInfoChanged(_nrOfPlayersReady, _players.Count);
     }
     void Start()
     {
@@ -74,5 +103,6 @@ public class ControllerDisplay : MonoBehaviour
         {
             _characterSelectionSlots.Add(slot.GetComponent<CharacterSelection>());
         }
+        _startText = FindFirstObjectByType<StartTextScript>();
     }
 }
