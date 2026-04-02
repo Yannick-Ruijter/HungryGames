@@ -365,6 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985722935}
   - component: {fileID: 985722934}
+  - component: {fileID: 985722936}
   m_Layer: 0
   m_Name: PlayAudioManager
   m_TagString: Untagged
@@ -404,6 +405,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &985722936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985722933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7f79a02a8217d44bf5ecbbcda87785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  _mixerGroup: {fileID: -1375216182650474829, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
+  _menuLoop: {fileID: 6418180475301049370, guid: c168caa7c9ed73d40a086ec91c770955, type: 2}
+  _gameplayStart: {fileID: 8300000, guid: 02d4caa870ab1a14bbf5f38a8efcac13, type: 3}
+  _gameplayLoop: {fileID: 6418180475301049370, guid: fe787ce2559cadd4898dee5417b080a4, type: 2}
+  _gameplayStartFast: {fileID: 8300000, guid: 4fe51ce696e610d4992d2636ad389394, type: 3}
+  _gameplayLoopFast: {fileID: 6418180475301049370, guid: 60e6721abf2481746936c7e8ccd46a25, type: 2}
+  _endMusic: {fileID: 8300000, guid: ddea7b8340867bb429478c6a0a9d8e08, type: 3}
 --- !u!1 &1086490358 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8339986661143436181, guid: 56c5ca1de025b73488c9ea3ff421cf1a, type: 3}

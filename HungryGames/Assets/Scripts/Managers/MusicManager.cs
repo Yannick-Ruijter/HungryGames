@@ -47,7 +47,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void PlayMenu() // Triggers when the main menu loads in. Both at the very start and after game restart.
+    public void Awake() // Triggers when the main menu loads in. Both at the very start and after game restart.
     {
         if (_audioSourceOneshot.resource == _endMusic)
             StartCoroutine(FadeOut(_audioSourceOneshot));

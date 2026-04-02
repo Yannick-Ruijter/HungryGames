@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 public class GameState : MonoBehaviour
 {
     public static GameState Instance { get; private set; }
+    
 
     [SerializeField] public PlayerManager _playerManager;
 
@@ -18,7 +19,8 @@ public class GameState : MonoBehaviour
     [SerializeField] private TMP_Text m_CountDownText;
     [SerializeField] private TMP_Text m_TimerText;
     public UnityEvent<string> onCountDownTextUpdate = new UnityEvent<string>();
-    public UnityEvent onGameStart = new UnityEvent();
+    static public UnityEvent onGameStart = new UnityEvent();
+    static public UnityEvent onminute = new UnityEvent();
 
     private Stage m_GameStage = Stage.BeforeStart;
 
