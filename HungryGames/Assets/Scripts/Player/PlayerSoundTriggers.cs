@@ -9,6 +9,8 @@ public class PlayerSoundTriggers : MonoBehaviour
     void Start()
     {
         _animpass.onJump.AddListener(Jump);
+        _animpass.OnDefise.AddListener(Jump);
+        _animpass.OnDefiseStop.AddListener(Jump);
         _entity.onEntityReady.AddListener(SetEntityType);
     }
 

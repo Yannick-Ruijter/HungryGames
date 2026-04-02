@@ -20,6 +20,8 @@ public class AnimationPassthrough : MonoBehaviour
     private bool m_isDefusing = false;
 
     public UnityEvent onJump = new UnityEvent();
+    public UnityEvent OnDefise = new UnityEvent();
+    public UnityEvent OnDefiseStop = new UnityEvent();
 
     public void onReady(Entity ent)
     {
@@ -105,6 +107,7 @@ public class AnimationPassthrough : MonoBehaviour
 
     public void StartDefuse()
     {
+        OnDefise.Invoke();
         if (entity.entityMeshType == EntityMeshType.Farmer)
             return;
         m_isDefusing = true;
@@ -113,6 +116,7 @@ public class AnimationPassthrough : MonoBehaviour
 
     public void StopDefuse()
     {
+        OnDefiseStop.Invoke();
         m_isDefusing = false;
     }
 
