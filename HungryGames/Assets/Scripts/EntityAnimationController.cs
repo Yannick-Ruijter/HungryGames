@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EntityAnimationController : MonoBehaviour
@@ -48,6 +49,8 @@ public class EntityAnimationController : MonoBehaviour
     private void Play(AnimationType animationName)
     {
         if (animationName == AnimationType.none)
+            return;
+        if (!animations.ContainsKey(animationName))
             return;
         if (_lastAnimationType != animationName)
         {

@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8288829114199134462, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 6721115458130967807}
+    - target: {fileID: 8288829114199134462, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
       propertyPath: m_playerController
       value: 
       objectReference: {fileID: 2549104550721976278}
@@ -66,6 +70,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
   m_PrefabInstance: {fileID: 188570127426967625}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8185918640366389431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8288829114199134462, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+  m_PrefabInstance: {fileID: 188570127426967625}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d1070631396734d9dd7f34a7482229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationPassthrough
 --- !u!1001 &1256195495873151099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,7 +195,19 @@ MonoBehaviour:
       m_Calls: []
   onEntityReady:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8185918640366389431}
+        m_TargetAssemblyTypeName: AnimationPassthrough, Assembly-CSharp
+        m_MethodName: onReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDamaged:
     m_PersistentCalls:
       m_Calls: []

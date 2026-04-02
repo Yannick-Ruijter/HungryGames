@@ -12,7 +12,7 @@ public class AnimationPassthrough : MonoBehaviour
     [SerializeField] private float m_AttackDuration = 0.5f;
     [SerializeField] private float m_JumpDuration = 0.5f;
 
-    [SerializeField] private EntityMeshAnimationPair[] m_meshPairs;
+    [SerializeField] private EntityMeshAnimationPair[] m_meshPairs = new EntityMeshAnimationPair[0];
 
     private bool m_isInAir = false;
     private bool m_isAttacking = false;
@@ -22,7 +22,7 @@ public class AnimationPassthrough : MonoBehaviour
     {
         foreach (var pair in m_meshPairs)
         {
-            if (pair.type == entity.entityMeshType)
+            if (pair.type == ent.entityMeshType)
             {
                 m_entityAnimationController = pair.controller;
             }
@@ -39,6 +39,21 @@ public class AnimationPassthrough : MonoBehaviour
     {
         ControllerInput input = m_playerController.m_ControllerInput;
         bool grounded = m_playerController.m_IsGrounded;
+
+        if (!m_entityAnimationController)
+        {
+            onReady(entity);
+        }
+        
+        switch(input.diffuseState)
+        {
+            case ControllerInput.DiffuseState.start:
+                StartDefuse();
+                break;
+            case ControllerInput.DiffuseState.end:
+                StopDefuse();
+                break;
+        }
 
         if (m_isAttacking)
             return;
@@ -67,16 +82,6 @@ public class AnimationPassthrough : MonoBehaviour
             }
         }
 
-        switch(input.diffuseState)
-        {
-            case ControllerInput.DiffuseState.start:
-                StartDefuse();
-                break;
-            case ControllerInput.DiffuseState.end:
-                StopDefuse();
-                break;
-        }
-
     }
 
     private IEnumerator PerformJump()
@@ -88,12 +93,16 @@ public class AnimationPassthrough : MonoBehaviour
 
     public void StartAttack()
     {
+        if (entity.entityMeshType != EntityMeshType.Farmer)
+            return;
         m_entityAnimationController.type = EntityAnimationController.AnimationType.attack;
         StartCoroutine(PerformAttack());
     }
 
     public void StartDefuse()
     {
+        if (entity.entityMeshType == EntityMeshType.Farmer)
+            return;
         m_isDefusing = true;
         m_entityAnimationController.type = EntityAnimationController.AnimationType.defuse;
     }
