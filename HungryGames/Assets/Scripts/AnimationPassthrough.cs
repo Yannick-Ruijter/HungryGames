@@ -36,8 +36,8 @@ public class AnimationPassthrough : MonoBehaviour
 
     private void Update()
     {
-        ControllerInput input = m_playerController.GetOutputInput();
-        bool grounded = m_playerController.IsGrounded();
+        ControllerInput input = m_playerController.m_ControllerInput;
+        bool grounded = m_playerController.m_IsGrounded;
 
         if (m_isAttacking)
             return;

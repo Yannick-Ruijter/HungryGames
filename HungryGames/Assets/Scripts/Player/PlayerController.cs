@@ -5,8 +5,16 @@ using UnityEngine.InputSystem;
 
 public struct ControllerInput
 {
+    public enum DiffuseState
+    {
+        start,
+        doing,
+        end,
+        not
+    }
     public Vector2 move;
     public bool jump;
+    public DiffuseState diffuseState;
 }
 
 public class PlayerController : MonoBehaviour
@@ -23,8 +31,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody m_RigidBody;
     [SerializeField] private Camera _camera;
 
-    [SerializeField] private Entity _entity;
-
     private InputAction m_MoveInput;
     private InputAction m_JumpInput;
 
@@ -32,15 +38,13 @@ public class PlayerController : MonoBehaviour
 
     public event SampleInputDirection GiveMeInputElseWhere;
     
-    private ControllerInput m_ControllerInput;
+    public ControllerInput m_ControllerInput;
     
     private Vector3 m_Direction = Vector3.zero;
 
-    private bool m_IsGrounded = false;
+    public bool m_IsGrounded = false;
 
     public bool CanMove = true;
-
-    private ControllerInput m_OutputInput;
     
     private bool m_HasInput
     {
@@ -76,11 +80,9 @@ public class PlayerController : MonoBehaviour
 
     private bool GetJump()
     {
-        if (_entity.isPlayer && _entity.entityMeshType == EntityMeshType.Farmer)
-            return false;
         if (GiveMeInputElseWhere != null)
-            return m_OutputInput.jump = m_ControllerInput.jump;
-        return m_OutputInput.jump = m_JumpInput.IsPressed();
+            return m_ControllerInput.jump;
+        return m_JumpInput.IsPressed();
     }
 
     // Update is called once per frame
@@ -147,8 +149,6 @@ public class PlayerController : MonoBehaviour
             m_Direction = cameraForward * moveInput.y + cameraRight * moveInput.x;
         else
             m_Direction = moveInput;
-
-        m_OutputInput.move = m_Direction;
     }
 
     private void OnTriggerStay(Collider other)
@@ -200,15 +200,5 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit(Collision other)
     {
         m_IsGrounded = false;
-    }
-
-    public ControllerInput GetOutputInput()
-    {
-        return m_OutputInput;
-    }
-
-    public bool IsGrounded()
-    {
-        return m_IsGrounded;
     }
 }
