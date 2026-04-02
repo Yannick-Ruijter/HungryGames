@@ -69,6 +69,9 @@ public class NPC_AI : MonoBehaviour
     private bool _canJump;
     private float _jumpTimer;
 
+    private bool _isDefusing;
+    private bool _wasDefusing;
+
     private Vector3 _velocity;
     private ControllerInput _controllerInput;
     
@@ -93,6 +96,7 @@ public class NPC_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _isDefusing = false;
         _navAgent.nextPosition = transform.position;
 
         _changeBehaviourTimer -= Time.deltaTime;
@@ -142,6 +146,18 @@ public class NPC_AI : MonoBehaviour
 
         }
 
+        if(_isDefusing && !_wasDefusing)
+        _controllerInput.diffuseState = ControllerInput.DiffuseState.start;
+        if (_isDefusing && _wasDefusing)
+            _controllerInput.diffuseState = ControllerInput.DiffuseState.doing;
+        if (!_isDefusing && _wasDefusing)
+            _controllerInput.diffuseState = ControllerInput.DiffuseState.end;
+        if (!_isDefusing && !_wasDefusing)
+            _controllerInput.diffuseState = ControllerInput.DiffuseState.not;
+
+
+        _wasDefusing = _isDefusing;
+
     }
 
     public void SwitchToSearch()
@@ -183,6 +199,7 @@ public class NPC_AI : MonoBehaviour
         }
         else
         {
+            
             _state = state.defusing;
         }
         _stateTime = UnityEngine.Random.Range(0, _maxDiffuseTime);
@@ -190,6 +207,7 @@ public class NPC_AI : MonoBehaviour
 
     public void DiffuseBehaviour()
     {
+        _isDefusing = true;
         _controllerInput.move = new Vector2();
         _controllerInput.jump = false;
         _stateTime -= Time.deltaTime;
@@ -213,6 +231,7 @@ public class NPC_AI : MonoBehaviour
 
     void SwitchToWander()
     {
+        
         _stateTime = UnityEngine.Random.Range(_minwanderTime, _maxwanderTime);
         _state = state.wandering;
     }

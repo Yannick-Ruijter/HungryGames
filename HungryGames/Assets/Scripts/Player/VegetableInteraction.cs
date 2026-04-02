@@ -7,6 +7,7 @@ public class VegetableInteraction : MonoBehaviour
     private Collider _currentInteractionCollider = null;
     private PlayerInput _playerInput = null;
     private InputAction _interactInput = null;
+    private PlayerController _playerController = null;
     private bool _isInteracting = false;
 
     private void Start()
@@ -15,6 +16,7 @@ public class VegetableInteraction : MonoBehaviour
         _interactInput = _playerInput.actions["Interact"];
         _interactInput.started += context => InteractionStarted();
         _interactInput.canceled += context => InteractionEnded();
+        _playerController = GetComponent<PlayerController>();
     }
     void InteractionEnded()
     {
@@ -24,6 +26,7 @@ public class VegetableInteraction : MonoBehaviour
     void InteractionStarted()
     {
         if(_currentInteraction == null) return;
+        _playerController.CanMove = false;
         _isInteracting = _currentInteraction.StartInteraction(gameObject);
     }
     private void OnTriggerEnter(Collider other)
@@ -46,6 +49,7 @@ public class VegetableInteraction : MonoBehaviour
     public void StopInteracting()
     {
         _isInteracting = false;
+        _playerController.CanMove = true;
         _currentInteraction?.StopInteraction(gameObject);
     }
 }

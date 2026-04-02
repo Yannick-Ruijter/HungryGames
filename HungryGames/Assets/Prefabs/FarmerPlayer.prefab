@@ -276,6 +276,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2256719309746547995, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
+      propertyPath: _entity
+      value: 
+      objectReference: {fileID: -5749251658527324257}
     - target: {fileID: 3607060253728470957, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
       propertyPath: _entity
       value: 
@@ -369,7 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmerVegetableCatcher
   _hitTarget: {fileID: 4266598065873234131}
   _stunDelay: 0.5
-  m_playerController: {fileID: 0}
+  m_playerController: {fileID: 5245708614194916755}
   onFarmerEatPlayer:
     m_PersistentCalls:
       m_Calls: []

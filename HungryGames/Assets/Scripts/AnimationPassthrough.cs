@@ -16,6 +16,7 @@ public class AnimationPassthrough : MonoBehaviour
 
     private bool m_isInAir = false;
     private bool m_isAttacking = false;
+    private bool m_isDefusing = false;
 
     public void onReady(Entity ent)
     {
@@ -36,10 +37,13 @@ public class AnimationPassthrough : MonoBehaviour
 
     private void Update()
     {
-        ControllerInput input = m_playerController.GetOutputInput();
-        bool grounded = m_playerController.IsGrounded();
+        ControllerInput input = m_playerController.m_ControllerInput;
+        bool grounded = m_playerController.m_IsGrounded;
 
         if (m_isAttacking)
+            return;
+
+        if (m_isDefusing)
             return;
 
         if (!m_isInAir)
@@ -62,6 +66,17 @@ public class AnimationPassthrough : MonoBehaviour
                 m_entityAnimationController.type = EntityAnimationController.AnimationType.idle;
             }
         }
+
+        switch(input.diffuseState)
+        {
+            case ControllerInput.DiffuseState.start:
+                StartDefuse();
+                break;
+            case ControllerInput.DiffuseState.end:
+                StopDefuse();
+                break;
+        }
+
     }
 
     private IEnumerator PerformJump()
@@ -75,6 +90,17 @@ public class AnimationPassthrough : MonoBehaviour
     {
         m_entityAnimationController.type = EntityAnimationController.AnimationType.attack;
         StartCoroutine(PerformAttack());
+    }
+
+    public void StartDefuse()
+    {
+        m_isDefusing = true;
+        m_entityAnimationController.type = EntityAnimationController.AnimationType.defuse;
+    }
+
+    public void StopDefuse()
+    {
+        m_isDefusing = false;
     }
 
     private IEnumerator PerformAttack()

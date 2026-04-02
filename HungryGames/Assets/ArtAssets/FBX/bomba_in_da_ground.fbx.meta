@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Nose_M.003
-    second: {fileID: 2100000, guid: 96ec3cbab7e20ad49ade6f2867850927, type: 2}
+    second: {fileID: 2100000, guid: 0fd05964977c88a4988728a99e00c47a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
