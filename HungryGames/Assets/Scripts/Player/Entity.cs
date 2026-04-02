@@ -41,7 +41,8 @@ public class Entity : MonoBehaviour
 
     public void AssignType(EntityMeshType type)
     {
-        entityMeshType = type;
+        if (entityMeshType != EntityMeshType.Farmer)
+            entityMeshType = type;
         onEntityReady.Invoke(this);
     }
 

@@ -10,7 +10,8 @@ public class EntityAnimationController : MonoBehaviour
         jump,
         walk,
         idle,
-        attack
+        attack,
+        defuse
     }
 
     [System.Serializable]
@@ -31,6 +32,7 @@ public class EntityAnimationController : MonoBehaviour
 
     private void Start()
     {
+        fill();
         foreach (AnimationPair pair in animationPairs)
         {
             animations.Add(pair.type, pair);
@@ -89,6 +91,8 @@ public class EntityAnimationController : MonoBehaviour
             return AnimationType.jump;
         if (name.Contains("attack"))
             return AnimationType.attack;
+        if (name.Contains("diffuse"))
+            return AnimationType.defuse;
         return AnimationType.none;
     }
 }
