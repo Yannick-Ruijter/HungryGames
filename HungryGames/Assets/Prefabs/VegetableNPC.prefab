@@ -76,8 +76,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2549104550721976278, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -102,6 +101,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+--- !u!114 &1400425571463543410 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2549104550721976278, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+  m_PrefabInstance: {fileID: 3463112766500916644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459494856775291885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb917357529578a44815e427ca507644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &8459494856775291885 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5001629423623839305, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
@@ -120,8 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_AI
   _navAgent: {fileID: 7630757125366254303}
-  _playerController: {fileID: 0}
-  _bombPrefab: {fileID: 0}
+  _playerController: {fileID: 1400425571463543410}
+  _bombPrefab: {fileID: 2470248043285964806, guid: 0192cd947ef7c324084804a602c3e50a, type: 3}
   _fieldRadius: 10
   _borderBuffer: 1
   _minswitchTime: 0
