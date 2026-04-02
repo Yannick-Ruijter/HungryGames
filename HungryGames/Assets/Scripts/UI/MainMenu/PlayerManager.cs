@@ -70,7 +70,9 @@ public class PlayerManager : MonoBehaviour
 
     public void SpawnPlayers()
     {
-        
+        var vegetableSpawnPoints = FindObjectsByType<VegetableSpawnPoint>(FindObjectsSortMode.None);
+        var farmerSpawnPoint = FindFirstObjectByType<FarmerSpawnPoint>();
+        int spawnpointIndex = 0;
         foreach (var player in players)
         {
             Debug.Log(player);
@@ -83,8 +85,16 @@ public class PlayerManager : MonoBehaviour
                 controlScheme: "Gamepad",
                 pairWithDevice: player.device
             );
-
-            newPlayer.tag = "Vegetable";
+            if(player.type == EntityMeshType.Farmer)
+            {
+                newPlayer.gameObject.transform.position = farmerSpawnPoint.transform.position;
+            }
+            else
+            {
+                newPlayer.gameObject.transform.position = vegetableSpawnPoints[spawnpointIndex].transform.position;
+                spawnpointIndex++;
+            }
+            newPlayer.gameObject.tag = "Vegetable";
 
             newPlayer.gameObject.GetComponent<Entity>().AssignType(player.type);
         }
