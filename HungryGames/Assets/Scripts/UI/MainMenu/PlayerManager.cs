@@ -70,7 +70,6 @@ public class PlayerManager : MonoBehaviour
 
     public void SpawnPlayers()
     {
-        
         foreach (var player in players)
         {
             Debug.Log(player);
@@ -85,7 +84,7 @@ public class PlayerManager : MonoBehaviour
             );
 
             newPlayer.tag = "Vegetable";
-
+            
             newPlayer.gameObject.GetComponent<Entity>().AssignType(player.type);
         }
     }
