@@ -89,28 +89,31 @@ public class PlayerManager : MonoBehaviour
 
     public void OnCharacterSelected()
     {
-        // do sounds things or whatever here
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_CharSelected");
         Debug.Log("Character has been selected");
     }
 
     public void OnPlayerJoined()
     {
-        //do sounds here
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_PlayerJoined");
         Debug.Log("Player joined");
     }
 
     public void OnPlayerLeft()
     {
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_PlayerLeft");
         Debug.Log("Player left");
     }
 
     public void OnCharacterDeselected()
     {
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_CharDeselected");
         Debug.Log("Character has been DEselected");
     }
 
     public void OnCharacterChanged()
     {
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_CharChanged");
         Debug.Log("player switched to another character");
     }
 
