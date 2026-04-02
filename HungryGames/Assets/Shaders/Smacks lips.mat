@@ -40,10 +40,10 @@ Material:
     - _bg_color: 1
     - _bg_factor: 0.207
     - _color_scaling: 25
-    - _dot: 0.01
-    - _outline_emission: 38
-    - _radius: 1
+    - _dot: 2.2
+    - _outline_emission: 45
+    - _radius: 1.4
     m_Colors:
-    - _outline: {r: 1, g: 1, b: 1, a: 0}
+    - _outline: {r: 0.9299191, g: 0.80584633, b: 0.80584633, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
