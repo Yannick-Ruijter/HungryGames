@@ -66,6 +66,17 @@ public class AnimationPassthrough : MonoBehaviour
                 m_entityAnimationController.type = EntityAnimationController.AnimationType.idle;
             }
         }
+
+        switch(input.diffuseState)
+        {
+            case ControllerInput.DiffuseState.start:
+                StartDefuse();
+                break;
+            case ControllerInput.DiffuseState.end:
+                StopDefuse();
+                break;
+        }
+
     }
 
     private IEnumerator PerformJump()
