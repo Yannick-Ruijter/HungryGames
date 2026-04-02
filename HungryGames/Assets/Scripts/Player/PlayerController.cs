@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody m_RigidBody;
     [SerializeField] private Camera _camera;
 
+    [SerializeField] private Entity _entity;
+
     private InputAction m_MoveInput;
     private InputAction m_JumpInput;
 
@@ -74,6 +76,8 @@ public class PlayerController : MonoBehaviour
 
     private bool GetJump()
     {
+        if (_entity.isPlayer && _entity.entityMeshType == EntityMeshType.Farmer)
+            return false;
         if (GiveMeInputElseWhere != null)
             return m_OutputInput.jump = m_ControllerInput.jump;
         return m_OutputInput.jump = m_JumpInput.IsPressed();
