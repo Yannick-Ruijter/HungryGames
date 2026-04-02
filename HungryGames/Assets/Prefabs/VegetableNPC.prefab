@@ -24,6 +24,26 @@ PrefabInstance:
       propertyPath: m_PlayerInput
       value: 
       objectReference: {fileID: 220723282974851990}
+    - target: {fileID: 3657671574565430792, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657671574565430792, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657671574565430792, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657671574565430792, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657671574565430792, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3683759908017638962, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
       propertyPath: m_Actions
       value: 
