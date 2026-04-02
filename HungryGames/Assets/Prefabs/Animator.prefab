@@ -204,6 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnimationPassthrough
   entity: {fileID: 4722470599092986425}
   m_playerController: {fileID: 0}
+  m_AttackDuration: 0.5
+  m_JumpDuration: 0.5
   m_meshPairs:
   - type: 1
     controller: {fileID: 2930743171511316099}
@@ -441,6 +443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: potato_walk
       objectReference: {fileID: 0}
+    - target: {fileID: 2330737668035362416, guid: bd47c5c5709a3a4428a66098ced3a8e0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b3cb09d8d219dc046be3d6a0ead9f9e0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -524,6 +530,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3310767908258125846, guid: 1e2421bed1ae3024cac2456cf673757a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: be421d9fa0d462a4ba8d23a4e91cd79a, type: 2}
     - target: {fileID: 919132149155446097, guid: 1e2421bed1ae3024cac2456cf673757a, type: 3}
       propertyPath: m_Name
       value: tomato_walk
@@ -611,6 +621,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3310767908258125846, guid: 184354a01f90be246976d1f8ecdbf1c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: be421d9fa0d462a4ba8d23a4e91cd79a, type: 2}
     - target: {fileID: 919132149155446097, guid: 184354a01f90be246976d1f8ecdbf1c0, type: 3}
       propertyPath: m_Name
       value: tomato_jump
@@ -710,6 +724,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2574437397538794748, guid: c4a67513596fa214c93bbee92ca2bb38, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 01d4db1b85c209947b1ae11af0cf9b14, type: 2}
     - target: {fileID: 919132149155446097, guid: c4a67513596fa214c93bbee92ca2bb38, type: 3}
       propertyPath: m_Name
       value: farmer_idle
@@ -809,6 +827,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2574437397538794748, guid: 39f18db14dae0894a89693e1178a6822, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 01d4db1b85c209947b1ae11af0cf9b14, type: 2}
     - target: {fileID: 919132149155446097, guid: 39f18db14dae0894a89693e1178a6822, type: 3}
       propertyPath: m_Name
       value: farmer_walk
@@ -900,6 +922,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: potato_jump
       objectReference: {fileID: 0}
+    - target: {fileID: 2330737668035362416, guid: e9fa0e9fd81c6844a98fa97747267c7c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b3cb09d8d219dc046be3d6a0ead9f9e0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -987,6 +1013,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lettuce_idle
       objectReference: {fileID: 0}
+    - target: {fileID: 4566732504037658133, guid: 6162a99bbe118734eb88e6f0b7fe42f4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a9446d80f4ec0de4abff0e2b72674756, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1074,6 +1104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: carrot_idle
       objectReference: {fileID: 0}
+    - target: {fileID: 2968335551676037938, guid: ed2f6bbdd8a53074e979222fa1fde920, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: db99a279391da934eb8b1baffd645783, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1169,6 +1203,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2574437397538794748, guid: 25eba2693f71c8347b2f63affa2215df, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 01d4db1b85c209947b1ae11af0cf9b14, type: 2}
     - target: {fileID: 919132149155446097, guid: 25eba2693f71c8347b2f63affa2215df, type: 3}
       propertyPath: m_Name
       value: farmer_attack
@@ -1260,6 +1298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lettuce_walk
       objectReference: {fileID: 0}
+    - target: {fileID: 5525469182198882611, guid: fc4467d8c61429d4795a2f5625233b0d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a9446d80f4ec0de4abff0e2b72674756, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1347,6 +1389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: carrot_jump
       objectReference: {fileID: 0}
+    - target: {fileID: 2968335551676037938, guid: 50926cee26ffd5f4ebcf56134a12c5bd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: db99a279391da934eb8b1baffd645783, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1434,6 +1480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: carrot_walk
       objectReference: {fileID: 0}
+    - target: {fileID: 2968335551676037938, guid: 02c84f0eb73e1694ba8d52f43af382c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: db99a279391da934eb8b1baffd645783, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1517,6 +1567,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2150597904098689245, guid: 495e19164f822e048969d70b3386a699, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b3cb09d8d219dc046be3d6a0ead9f9e0, type: 2}
     - target: {fileID: 919132149155446097, guid: 495e19164f822e048969d70b3386a699, type: 3}
       propertyPath: m_Name
       value: potato_idle
@@ -1604,6 +1658,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3384889459058842170, guid: 273ff9be534a8254e8f3087d643670a7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: be421d9fa0d462a4ba8d23a4e91cd79a, type: 2}
     - target: {fileID: 919132149155446097, guid: 273ff9be534a8254e8f3087d643670a7, type: 3}
       propertyPath: m_Name
       value: tomato_idle
@@ -1695,6 +1753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lettuce_jump
       objectReference: {fileID: 0}
+    - target: {fileID: 3655179522917562675, guid: f137822b9723b5646b6b09612adc8bb2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a9446d80f4ec0de4abff0e2b72674756, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
