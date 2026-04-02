@@ -127,6 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3485583126590979649}
   - component: {fileID: 8288829114199134462}
+  - component: {fileID: 3487363601332639305}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -181,6 +182,23 @@ MonoBehaviour:
     controller: {fileID: 13958642918110276}
   - type: 0
     controller: {fileID: 3758398168557019056}
+  onJump:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3487363601332639305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2902248517665961810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a17d5684bc33a342a70be2dfe6b8b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSoundTriggers
+  _animpass: {fileID: 8288829114199134462}
+  _entity: {fileID: 0}
 --- !u!1 &3582452410598483161
 GameObject:
   m_ObjectHideFlags: 0

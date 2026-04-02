@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7493907816063530803}
   - component: {fileID: 2481975132613021257}
   - component: {fileID: 3607060253728470957}
-  - component: {fileID: 2256719309746547995}
   - component: {fileID: 4453368080324884890}
   - component: {fileID: 6145283505759599825}
   - component: {fileID: 4978531528763404829}
   - component: {fileID: 9136094263900522626}
   - component: {fileID: 5306848281840739159}
+  - component: {fileID: 2439656359239233876}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -92,19 +92,6 @@ MonoBehaviour:
   _camera: {fileID: 0}
   m_IsGrounded: 0
   CanMove: 1
---- !u!114 &2256719309746547995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6055015292429049394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a17d5684bc33a342a70be2dfe6b8b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSoundTriggers
-  _entity: {fileID: 0}
 --- !u!136 &4453368080324884890
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -235,3 +222,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6055015292429049394}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2439656359239233876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6055015292429049394}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a17d5684bc33a342a70be2dfe6b8b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSoundTriggers
+  _animpass: {fileID: 0}
+  _entity: {fileID: 0}

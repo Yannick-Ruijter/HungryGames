@@ -81,7 +81,10 @@ public class PlayerController : MonoBehaviour
     private bool GetJump()
     {
         if (GiveMeInputElseWhere != null)
+        {
             return m_ControllerInput.jump;
+        }
+
         return m_JumpInput.IsPressed();
     }
 
