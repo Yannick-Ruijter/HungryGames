@@ -125,6 +125,7 @@ public class ControllerDisplay : MonoBehaviour
             if (!player.CharacterSelected) return;
         }
         if (!_charsFound.Contains(EntityMeshType.Farmer)) return;
+        _playerManager.OnGameStart();
         FindFirstObjectByType<SceneTransition>().LoadScene();
     }
 

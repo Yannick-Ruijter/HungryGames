@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundEffect
   clip: {fileID: 6418180475301049370, guid: 61b6dcc25010b4249b3a0993b44a0d4b, type: 2}
   sampleClip: {fileID: 8300000, guid: 1bb81ea14c41abb4bba4266f489f8258, type: 3}
-  pitch: 0
+  pitch: 1
   volume: 1
   audioMixerGroup: {fileID: -6520124622713891884, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
   is3D: 1

@@ -10,34 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 907c26540ae631c44baf0a9fa929c272, type: 3}
-  m_Name: SFX_Vegetables_Jump_Lettuce_B
+  m_Name: SFX_UI_PlayerJoined
   m_EditorClassIdentifier: Assembly-CSharp::SoundEffect
-  clip: {fileID: 6418180475301049370, guid: 0e597819318045a4082af4493b6462c4, type: 2}
-  sampleClip: {fileID: 8300000, guid: d9bbf8111b2cc744ba6682d9615d4a60, type: 3}
+  clip: {fileID: 6418180475301049370, guid: 5cfb31be23e3a5245b81174802b25857, type: 2}
+  sampleClip: {fileID: 8300000, guid: 9ef1e79c3e25d084590894891ed230ba, type: 3}
   pitch: 1
   volume: 1
-  audioMixerGroup: {fileID: 3795139611937410409, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
-  is3D: 1
+  audioMixerGroup: {fileID: 6395228794689099346, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
+  is3D: 0
   minDistance: 0
-  maxDistance: 200
+  maxDistance: 1000
   fallOff:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.065816686
-      outSlope: -0.065816686
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.13220364
-    - serializedVersion: 3
-      time: 1
-      value: 0
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0

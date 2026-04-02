@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
         public InputDevice device;
         public EntityMeshType type;
         public int playerIndex;
+        public GameObject gameObject;
     }
 
     static List<PlayerData> players = new List<PlayerData>();
@@ -44,7 +45,8 @@ public class PlayerManager : MonoBehaviour
             user = playerInput.user,
             device = playerInput.devices[0],
             type = playerInput.GetComponent<PlayerMainMenu>().CurrentType,
-            playerIndex = playerInput.playerIndex
+            playerIndex = playerInput.playerIndex,
+            gameObject = playerInput.gameObject
         };
 
         players.Add(data);
@@ -55,11 +57,11 @@ public class PlayerManager : MonoBehaviour
     private void OnSceneSwitch(Scene arg0, Scene arg1)
     {
         Debug.Log("hi");
-        //m_PlayerInputManager\
-        //p.pl
+
         Debug.Log(players);
         foreach (var player in players)
         {
+            //player.type = player.gameObject.GetComponent<PlayerMainMenu>().CurrentType;
             Debug.Log(player);
         }
         FindAnyObjectByType<GameState>()._playerManager = this;
@@ -82,35 +84,47 @@ public class PlayerManager : MonoBehaviour
                 pairWithDevice: player.device
             );
 
+            newPlayer.tag = "Vegetable";
 
             newPlayer.gameObject.GetComponent<Entity>().AssignType(player.type);
         }
     }
 
+    public void OnGameStart()
+    {
+        foreach (var player in players)
+        {
+            player.type = player.gameObject.GetComponent<PlayerMainMenu>().CurrentType;
+            Debug.Log(player);
+        }
+    }
     public void OnCharacterSelected()
     {
-        // do sounds things or whatever here
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_CharSelected");
         Debug.Log("Character has been selected");
     }
 
     public void OnPlayerJoined()
     {
-        //do sounds here
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_PlayerJoined");
         Debug.Log("Player joined");
     }
 
     public void OnPlayerLeft()
     {
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_PlayerLeft");
         Debug.Log("Player left");
     }
 
     public void OnCharacterDeselected()
     {
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_CharDeselected");
         Debug.Log("Character has been DEselected");
     }
 
     public void OnCharacterChanged()
     {
+        PlayerAudioManager.PlaySoundNonAlloc("SFX_UI_CharChanged");
         Debug.Log("player switched to another character");
     }
 
