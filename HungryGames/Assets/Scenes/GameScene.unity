@@ -753,6 +753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VegetableNPC (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -875,6 +879,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VegetableNPC (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -996,6 +1004,10 @@ PrefabInstance:
     - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       propertyPath: m_Name
       value: VegetableNPC (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1438,6 +1450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VegetableNPC (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1720,6 +1736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VegetableNPC (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1863,6 +1883,10 @@ PrefabInstance:
     - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       propertyPath: m_Name
       value: VegetableNPC (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2883,6 +2907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VegetableNPC (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3116,6 +3144,10 @@ PrefabInstance:
     - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       propertyPath: m_Name
       value: VegetableNPC (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3541,6 +3573,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VegetableNPC (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3605,6 +3641,10 @@ PrefabInstance:
     - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       propertyPath: m_Name
       value: VegetableNPC (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3939,6 +3979,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VegetableNPC (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4003,6 +4047,10 @@ PrefabInstance:
     - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
       propertyPath: m_Name
       value: VegetableNPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459494856775291885, guid: edccfa8778bd20c43aa9c0bdbd464e88, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

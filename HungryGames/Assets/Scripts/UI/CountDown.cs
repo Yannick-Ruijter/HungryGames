@@ -11,7 +11,6 @@ public class CountDown : MonoBehaviour
     private float _bounceVal = 0f;
 
     bool _bounce = false;
-    bool _toChange = false;
     string _text;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

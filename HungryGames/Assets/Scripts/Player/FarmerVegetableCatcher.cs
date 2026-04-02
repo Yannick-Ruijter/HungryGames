@@ -46,9 +46,9 @@ public class FarmerVegetableCatcher : MonoBehaviour
         if (_closestVegetable)
         {
             _captured = _closestVegetable;
-            
+            _closestVegetable.GetComponent<PlayerController>().CanMove = false;
             onAttack.Invoke();
-
+            Invoke("KillTarget", 0.5f);
             StartCoroutine(Eating());
         }
     }
@@ -56,14 +56,14 @@ public class FarmerVegetableCatcher : MonoBehaviour
     private IEnumerator Eating()
     {
         m_playerController.CanMove = false;
-        PlayerController controller = _captured.GetComponent<PlayerController>();
+        PlayerController controller = _closestVegetable.GetComponent<PlayerController>();
         
         controller.GetComponentInChildren<AnimationPassthrough>().StartAttack();
 
         if (controller)
             StartCoroutine(ApplyStun(controller));
             
-        Entity entity = _captured.GetComponent<Entity>();
+        Entity entity = _closestVegetable.GetComponent<Entity>();
         
         yield return new WaitForSeconds(_stunDelay);
         entity?.TakeDamage();
@@ -78,7 +78,7 @@ public class FarmerVegetableCatcher : MonoBehaviour
                 onFarmerEatPlayer.Invoke();
             }
         }
-        
+        //_vegetablesInrange.Remove(null);
         m_playerController.CanMove = true;
     }
 
@@ -104,6 +104,7 @@ public class FarmerVegetableCatcher : MonoBehaviour
 
     void CalculateClosestVegetable()
     {
+        int nullCounter = 0;
         GameObject tempClosestVegetable = null;
         if (_vegetablesInrange.Count == 0)
         {
@@ -119,6 +120,11 @@ public class FarmerVegetableCatcher : MonoBehaviour
             float closestDistanceSqrd = float.MaxValue;
             foreach (var vegetable in _vegetablesInrange)
             {
+                if(vegetable == null)
+                {
+                    nullCounter++;
+                    continue;
+                }
                 Vector3 posDiff = vegetable.transform.position - _hitTarget.transform.position;
                 float distanceSqrd = Vector3.SqrMagnitude(posDiff);
                 if (distanceSqrd < closestDistanceSqrd)
@@ -131,5 +137,11 @@ public class FarmerVegetableCatcher : MonoBehaviour
         if(tempClosestVegetable != _closestVegetable && _closestVegetable != null) _closestVegetable.GetComponent<MeshRenderer>().material.color = Color.white;
         _closestVegetable = tempClosestVegetable;
         _closestVegetable.GetComponent<MeshRenderer>().material.color = Color.red;
+        for (int i = 0; i < nullCounter; i++) _vegetablesInrange.Remove(null);
+    }
+
+    void KillTarget()
+    {
+        _closestVegetable.GetComponent<PlayerController>().Kill();
     }
 }

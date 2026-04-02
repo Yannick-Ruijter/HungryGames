@@ -204,4 +204,9 @@ public class PlayerController : MonoBehaviour
     {
         m_IsGrounded = false;
     }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
 }

@@ -40,6 +40,7 @@ public class GameState : MonoBehaviour
 
     private IEnumerator Start()
     {
+        Instance = this;
         SpawnPlayers();
 
         yield return new WaitForEndOfFrame();
