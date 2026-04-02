@@ -14,6 +14,7 @@ public class MineController : MonoBehaviour, IInteractable
     List<GameObject> _toBeRemovedPlayers = new();
     [SerializeField] public Renderer _renderer;
     List<Material> _materials = new List<Material>();
+    [SerializeField] public Material _material;
 
     private void Start()
     {
@@ -52,6 +53,7 @@ public class MineController : MonoBehaviour, IInteractable
             if (_currentInteractionTime >= _interactionTimeNeeded && !_isDefused)
             {
                 _isDefused = true;
+                _materials[0] = _material;
                 foreach (var player in _interactingPlayers)
                 {
                     player.GetComponent<VegetableInteraction>().StopInteracting();
@@ -70,8 +72,6 @@ public class MineController : MonoBehaviour, IInteractable
         // if he's not diffused and the value changed, update material
         if (changeMat && !_isDefused)
         {
-            Debug.Log("changing");
-            Debug.Log(_currentInteractionTime);
             _materials[2].SetFloat("_time", _currentInteractionTime/ _interactionTimeNeeded);
         }
 
