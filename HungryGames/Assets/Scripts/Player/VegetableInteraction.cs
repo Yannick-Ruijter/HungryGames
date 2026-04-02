@@ -47,7 +47,5 @@ public class VegetableInteraction : MonoBehaviour
     {
         _isInteracting = false;
         _currentInteraction?.StopInteraction(gameObject);
-        _currentInteraction = null;
-        _currentInteractionCollider = null;
     }
 }
