@@ -2805,7 +2805,7 @@ MonoBehaviour:
   onGameStart:
     m_PersistentCalls:
       m_Calls: []
-  CountdownTime: 10
+  CountdownTime: 3
   RoundTime: 300
   DefusedMineDifferenceRequirement: 1
 --- !u!4 &1238840968
