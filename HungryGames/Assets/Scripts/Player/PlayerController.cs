@@ -5,8 +5,16 @@ using UnityEngine.InputSystem;
 
 public struct ControllerInput
 {
+    public enum DiffuseState
+    {
+        start,
+        doing,
+        end,
+        not
+    }
     public Vector2 move;
     public bool jump;
+    public DiffuseState diffuseState;
 }
 
 public class PlayerController : MonoBehaviour

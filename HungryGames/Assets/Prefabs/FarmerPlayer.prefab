@@ -147,6 +147,83 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0000002, z: 1}
   m_Center: {x: 0, y: -0.00000023841858, z: 0}
+--- !u!1001 &3074812299735903604
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2107103489847749901}
+    m_Modifications:
+    - target: {fileID: 2902248517665961810, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_Name
+      value: Animator
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288829114199134462, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+      propertyPath: m_playerController
+      value: 
+      objectReference: {fileID: 5245708614194916755}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+--- !u!4 &1942364376594797365 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3485583126590979649, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+  m_PrefabInstance: {fileID: 3074812299735903604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6461604810604150154 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8288829114199134462, guid: 640e08961a7d1bc4b9cdc6fe132202a9, type: 3}
+  m_PrefabInstance: {fileID: 3074812299735903604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d1070631396734d9dd7f34a7482229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationPassthrough
 --- !u!1001 &8845731580642138686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,6 +277,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3607060253728470957, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
+      propertyPath: _entity
+      value: 
+      objectReference: {fileID: -5749251658527324257}
+    - target: {fileID: 3607060253728470957, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
       propertyPath: _movementSpeed
       value: 6
       objectReference: {fileID: 0}
@@ -219,12 +300,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: FarmerPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 9136094263900522626, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7493907816063530803, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6664685020284970921}
+    - targetCorrespondingSourceObject: {fileID: 7493907816063530803, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1942364376594797365}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6055015292429049394, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
       insertIndex: 2
@@ -280,3 +368,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmerVegetableCatcher
   _hitTarget: {fileID: 4266598065873234131}
+  _stunDelay: 0.5
+  m_playerController: {fileID: 0}
+  onFarmerEatPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  onAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6461604810604150154}
+        m_TargetAssemblyTypeName: AnimationPassthrough, Assembly-CSharp
+        m_MethodName: StartAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5245708614194916755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3607060253728470957, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
+  m_PrefabInstance: {fileID: 8845731580642138686}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3370353137568941068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb917357529578a44815e427ca507644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController

@@ -89,6 +89,7 @@ MonoBehaviour:
   _impulseJumpVelocity: 2
   m_RigidBody: {fileID: 6145283505759599825}
   _camera: {fileID: 0}
+  CanMove: 1
 --- !u!136 &4453368080324884890
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6055015292429049394}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

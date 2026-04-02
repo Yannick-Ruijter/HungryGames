@@ -23,7 +23,7 @@ public class EntityAnimationController : MonoBehaviour
 
     [SerializeField] private AnimationPair[] animationPairs;
 
-    [SerializeField] private AnimationType type;
+    public AnimationType type;
 
     private AnimationType _lastAnimationType = AnimationType.none;
     
