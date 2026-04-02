@@ -12,7 +12,10 @@ public class FarmerVegetableCatcher : MonoBehaviour
     private List<GameObject> _vegetablesInrange = new();
     [SerializeField] private float _stunDelay = 0.5f;
 
+    [SerializeField] private PlayerController m_playerController;
+
     public UnityEvent onFarmerEatPlayer = new UnityEvent();
+    public UnityEvent onAttack = new UnityEvent();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private GameObject _closestVegetable = null;
@@ -43,6 +46,8 @@ public class FarmerVegetableCatcher : MonoBehaviour
         if (_closestVegetable)
         {
             _captured = _closestVegetable;
+            
+            onAttack.Invoke();
 
             StartCoroutine(Eating());
         }
@@ -50,6 +55,7 @@ public class FarmerVegetableCatcher : MonoBehaviour
 
     private IEnumerator Eating()
     {
+        m_playerController.CanMove = false;
         PlayerController controller = _captured.GetComponent<PlayerController>();
 
         if (controller)
@@ -70,6 +76,8 @@ public class FarmerVegetableCatcher : MonoBehaviour
                 onFarmerEatPlayer.Invoke();
             }
         }
+        
+        m_playerController.CanMove = true;
     }
 
     private IEnumerator ApplyStun(PlayerController controller)

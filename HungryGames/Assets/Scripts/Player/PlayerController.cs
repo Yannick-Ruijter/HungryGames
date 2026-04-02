@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private bool m_IsGrounded = false;
 
     public bool CanMove = true;
+
+    private ControllerInput m_OutputInput;
     
     private bool m_HasInput
     {
@@ -73,8 +75,8 @@ public class PlayerController : MonoBehaviour
     private bool GetJump()
     {
         if (GiveMeInputElseWhere != null)
-            return m_ControllerInput.jump;
-        return m_JumpInput.IsPressed();
+            return m_OutputInput.jump = m_ControllerInput.jump;
+        return m_OutputInput.jump = m_JumpInput.IsPressed();
     }
 
     // Update is called once per frame
@@ -141,6 +143,8 @@ public class PlayerController : MonoBehaviour
             m_Direction = cameraForward * moveInput.y + cameraRight * moveInput.x;
         else
             m_Direction = moveInput;
+
+        m_OutputInput.move = m_Direction;
     }
 
     private void OnTriggerStay(Collider other)
@@ -192,5 +196,15 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit(Collision other)
     {
         m_IsGrounded = false;
+    }
+
+    public ControllerInput GetOutputInput()
+    {
+        return m_OutputInput;
+    }
+
+    public bool IsGrounded()
+    {
+        return m_IsGrounded;
     }
 }
