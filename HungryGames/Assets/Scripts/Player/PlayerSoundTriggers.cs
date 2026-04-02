@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class PlayerSoundTriggers : MonoBehaviour
 {
+    [SerializeField] private AnimationPassthrough _animpass;
     [SerializeField] private Entity _entity;
     private EntityMeshType _entityType;
     
     void Start()
     {
+        _animpass.onJump.AddListener(Jump);
         _entity.onEntityReady.AddListener(SetEntityType);
     }
 

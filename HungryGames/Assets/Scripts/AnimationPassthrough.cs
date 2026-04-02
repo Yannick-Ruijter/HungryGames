@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationPassthrough : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class AnimationPassthrough : MonoBehaviour
     private bool m_isAttacking = false;
     private bool m_isDefusing = false;
 
-    public Event onJump; 
+    public UnityEvent onJump = new UnityEvent();
 
     public void onReady(Entity ent)
     {
@@ -52,6 +53,7 @@ public class AnimationPassthrough : MonoBehaviour
         {
             if (grounded && input.jump)
             {
+                onJump.Invoke();
                 m_entityAnimationController.type = EntityAnimationController.AnimationType.jump;
                 StartCoroutine(PerformJump());
                 return;
