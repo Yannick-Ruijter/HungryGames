@@ -57,6 +57,8 @@ public class FarmerVegetableCatcher : MonoBehaviour
     {
         m_playerController.CanMove = false;
         PlayerController controller = _captured.GetComponent<PlayerController>();
+        
+        controller.GetComponentInChildren<AnimationPassthrough>().StartAttack();
 
         if (controller)
             StartCoroutine(ApplyStun(controller));
