@@ -33,6 +33,8 @@ public class MusicManager : MonoBehaviour
         _audioSourceLoop.spatialBlend = 0.0f;
 
         DontDestroyOnLoad(gameObject);
+
+        GameState.onGameStart.AddListener(PlayGameplay);
     }
     
     void Update()
