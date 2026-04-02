@@ -38,11 +38,11 @@ public class PlayerController : MonoBehaviour
 
     public event SampleInputDirection GiveMeInputElseWhere;
     
-    private ControllerInput m_ControllerInput;
+    public ControllerInput m_ControllerInput;
     
     private Vector3 m_Direction = Vector3.zero;
 
-    private bool m_IsGrounded = false;
+    public bool m_IsGrounded = false;
 
     public bool CanMove = true;
     
