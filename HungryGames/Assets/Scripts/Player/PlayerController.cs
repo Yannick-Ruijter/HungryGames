@@ -33,8 +33,6 @@ public class PlayerController : MonoBehaviour
 
     private InputAction m_MoveInput;
     private InputAction m_JumpInput;
-    
-    private PlayerSoundTriggers _soundTriggers;
 
     public delegate ControllerInput SampleInputDirection();
 
@@ -66,8 +64,6 @@ public class PlayerController : MonoBehaviour
             m_MoveInput = m_PlayerInput.actions["Move"];
             m_JumpInput = m_PlayerInput.actions["Jump"];
         }
-        
-        _soundTriggers = GetComponent<PlayerSoundTriggers>();
     }
 
     private void OnDestroy()
