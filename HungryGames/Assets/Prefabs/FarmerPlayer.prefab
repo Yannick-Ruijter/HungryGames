@@ -284,6 +284,10 @@ PrefabInstance:
       propertyPath: _entity
       value: 
       objectReference: {fileID: -5749251658527324257}
+    - target: {fileID: 2439656359239233876, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
+      propertyPath: _entity
+      value: 
+      objectReference: {fileID: -5749251658527324257}
     - target: {fileID: 3607060253728470957, guid: 55f932ff9f1bcd04f8c95583a265c026, type: 3}
       propertyPath: _entity
       value: 

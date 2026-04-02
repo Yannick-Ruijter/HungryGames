@@ -18,6 +18,8 @@ public class AnimationPassthrough : MonoBehaviour
     private bool m_isAttacking = false;
     private bool m_isDefusing = false;
 
+    public Event onJump; 
+
     public void onReady(Entity ent)
     {
         foreach (var pair in m_meshPairs)

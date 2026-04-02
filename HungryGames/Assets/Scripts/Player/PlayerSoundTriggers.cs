@@ -15,7 +15,7 @@ public class PlayerSoundTriggers : MonoBehaviour
         _entityType = _entity.entityMeshType;
     }
 
-    void Footstep()
+    public void Footstep()
     {
         if (_entityType == EntityMeshType.Farmer)
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Farmer_Footstep");
@@ -24,9 +24,10 @@ public class PlayerSoundTriggers : MonoBehaviour
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Vegetables_Footsteps_A");
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Vegetables_Footsteps_B");
         }
+        Debug.Log("Played footstep");
     }
 
-    void Jump()
+    public void Jump()
     {
         if (_entityType == EntityMeshType.Farmer)
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Farmer_Footstep");
@@ -48,15 +49,16 @@ public class PlayerSoundTriggers : MonoBehaviour
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Vegetables_Jump_Tomato_A");
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Vegetables_Jump_Tomato_B");
         }
+        Debug.Log("Played jump");
     }
 
-    void Cloth()
+    public void Cloth()
     {
         if (_entityType == EntityMeshType.Farmer)
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Farmer_ClothMov");
     }
     
-    void Chomp()
+    public void Chomp()
     {
         if (_entityType == EntityMeshType.Farmer)
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Farmer_Chomp_Voice");
