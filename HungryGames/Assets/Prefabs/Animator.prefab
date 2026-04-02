@@ -126,7 +126,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3485583126590979649}
-  - component: {fileID: 4722470599092986425}
   - component: {fileID: 8288829114199134462}
   m_Layer: 0
   m_Name: Animator
@@ -155,42 +154,6 @@ Transform:
   - {fileID: 840938382532814398}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4722470599092986425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902248517665961810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67842877c6fc044daff2067e383cefa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Entity
-  entityMeshType: 1
-  lives: 1
-  isPlayer: 0
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  onEntityReady:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8288829114199134462}
-        m_TargetAssemblyTypeName: AnimationPassthrough, Assembly-CSharp
-        m_MethodName: onReady
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDamaged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8288829114199134462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d1070631396734d9dd7f34a7482229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationPassthrough
-  entity: {fileID: 4722470599092986425}
+  entity: {fileID: 0}
   m_playerController: {fileID: 0}
   m_AttackDuration: 0.5
   m_JumpDuration: 0.5

@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: isPlayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8185918640366389431, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 7874896136985653595}
     - target: {fileID: 8543700478360975176, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
