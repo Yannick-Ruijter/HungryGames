@@ -13,6 +13,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2549104550721976278, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+      propertyPath: _entity
+      value: 
+      objectReference: {fileID: 7874896136985653595}
+    - target: {fileID: 2549104550721976278, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -112,6 +116,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb917357529578a44815e427ca507644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+--- !u!114 &7874896136985653595 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6721115458130967807, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
+  m_PrefabInstance: {fileID: 3463112766500916644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459494856775291885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67842877c6fc044daff2067e383cefa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity
 --- !u!1 &8459494856775291885 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5001629423623839305, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
