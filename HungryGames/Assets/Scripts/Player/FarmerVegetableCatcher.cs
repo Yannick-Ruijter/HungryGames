@@ -26,7 +26,7 @@ public class FarmerVegetableCatcher : MonoBehaviour
 
     private void Start()
     {
-        _captureAction = GetComponent<PlayerInput>().actions["CaptureVegetable"];
+        _captureAction = GetComponent<PlayerInput>().actions["Interact"];
         _captureAction.performed += CaptureVegetable;
     }
 
