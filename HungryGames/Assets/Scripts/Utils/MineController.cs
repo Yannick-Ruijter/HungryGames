@@ -53,7 +53,7 @@ public class MineController : MonoBehaviour, IInteractable
             if (_currentInteractionTime >= _interactionTimeNeeded && !_isDefused)
             {
                 _isDefused = true;
-                _materials[0] = _material;
+                _materials[0].SetInt("_diffused", 1);
                 foreach (var player in _interactingPlayers)
                 {
                     player.GetComponent<VegetableInteraction>().StopInteracting();
