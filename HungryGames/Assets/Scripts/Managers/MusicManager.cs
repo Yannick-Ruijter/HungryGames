@@ -33,25 +33,25 @@ public class MusicManager : MonoBehaviour
         _audioSourceLoop.spatialBlend = 0.0f;
 
         DontDestroyOnLoad(gameObject);
-    }
-    
-    void Update()
-    {
-        if (_audioSourceLoop.resource == _menuLoop) // This is the reason it's on DontDestroyOnLoad
-        {
-            _timeSinceLastLoop += Time.deltaTime; // The time since _menuLoop last looped, lets us play _gameplayStart just when it's done
-            if (_timeSinceLastLoop >= 16f) // _menuLoop is exactly 16s long
-                _timeSinceLastLoop = 0;
-        }
-    }
 
-    public void PlayMenu() // Triggers when the main menu loads in. Both at the very start and after game restart.
-    {
-        if (_audioSourceOneshot.resource == _endMusic)
-            StartCoroutine(FadeOut(_audioSourceOneshot));
+        GameState.onGameStart.AddListener(PlayGameplay);
+        
+        
         _audioSourceLoop.resource = _menuLoop;
         _audioSourceLoop.Play();
     }
+    
+    // void Update()
+    // {
+    //     if (_audioSourceLoop.resource == _menuLoop) // This is the reason it's on DontDestroyOnLoad
+    //     {
+    //         _timeSinceLastLoop += Time.deltaTime; // The time since _menuLoop last looped, lets us play _gameplayStart just when it's done
+    //         if (_timeSinceLastLoop >= 16f) // _menuLoop is exactly 16s long
+    //             _timeSinceLastLoop = 0;
+    //     }
+    // }
+
+   
     
     public void PlayGameplay() // Triggers when gameplay starts
     {

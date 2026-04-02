@@ -17,7 +17,7 @@ MonoBehaviour:
   pitch: 1
   volume: 1
   audioMixerGroup: {fileID: 3795139611937410409, guid: 613e0d39fb698074dab156b2d161201f, type: 2}
-  is3D: 1
+  is3D: 0
   minDistance: 0
   maxDistance: 200
   fallOff:

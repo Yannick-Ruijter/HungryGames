@@ -6,13 +6,10 @@ using Unity.AI.Navigation;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Shaders;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
-using static UnityEngine.Rendering.DebugUI;
 
 
 
