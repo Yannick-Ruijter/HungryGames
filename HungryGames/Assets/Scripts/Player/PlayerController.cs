@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     
     private bool m_HasInput
     {
-        get { return m_PlayerInput || GiveMeInputElseWhere != null;  }
+        get { return m_PlayerInput.actions || GiveMeInputElseWhere != null;  }
     }
     
     void Start()

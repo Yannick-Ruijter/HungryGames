@@ -50,7 +50,9 @@ public class PlayerManager : MonoBehaviour
 
         players.Add(data);
 
-        FindFirstObjectByType<ControllerDisplay>().AddPlayer(playerInput.gameObject);
+        var display = FindFirstObjectByType<ControllerDisplay>();
+        if(display != null)
+            display.AddPlayer(playerInput.gameObject);
     }
 
     private void OnSceneSwitch(Scene arg0, Scene arg1)
