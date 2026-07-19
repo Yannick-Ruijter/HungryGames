@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MeshSwitcher : MonoBehaviour
 {
-    [SerializeField] MeshRenderer[] _meshes;
-    EntityMeshType _myType;
+    [SerializeField] private MeshRenderer[] _meshes;
+    private EntityMeshType _myType;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,10 +13,10 @@ public class MeshSwitcher : MonoBehaviour
     public void SwitchMesh(Entity type)
     {
         _myType = type.entityMeshType;
-        foreach(var mesh in _meshes)
+        for (int i = 0; i < _meshes.Length; i++)
         {
-            if(mesh)
-            mesh.enabled = false;
+            if (_meshes[i] != null)
+                _meshes[i].enabled = false;
         }
 
         _meshes[(int)_myType - 1].enabled = true;
