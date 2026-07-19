@@ -66,8 +66,9 @@ public class PlayerManager : MonoBehaviour
             //player.type = player.gameObject.GetComponent<PlayerMainMenu>().CurrentType;
             Debug.Log(player);
         }
-        FindAnyObjectByType<GameState>()._playerManager = this;
-
+        var state = FindAnyObjectByType<GameState>();
+        if(state != null)
+            state._playerManager = this;
     }
 
     public void SpawnPlayers()

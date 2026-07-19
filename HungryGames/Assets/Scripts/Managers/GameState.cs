@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GameState : MonoBehaviour
@@ -31,7 +32,7 @@ public class GameState : MonoBehaviour
     
     private HashSet<MineController> m_DefusedMines = new HashSet<MineController>();
 
-    public int DefusedMineDifferenceRequirement = 1;
+    public int DefusedMineDifferenceRequirement = 0;
 
     private int DeadPlayerCount = 0;
     
@@ -173,12 +174,14 @@ public class GameState : MonoBehaviour
     {
         m_GameStage = Stage.VegetablesWin;
         SetPlayerCanMove(false);
+        SceneManager.LoadScene("Victory_Vegetable");
     }
 
     private void FarmerWins()
     {
         m_GameStage = Stage.FarmerWin;
         SetPlayerCanMove(false);
+        SceneManager.LoadScene("Victory_Farmer");
     }
 
     public void OnMineDefuse(MineController mine)
