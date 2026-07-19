@@ -9,14 +9,30 @@ public class VegetableInteraction : MonoBehaviour
     private InputAction _interactInput = null;
     private PlayerController _playerController = null;
     private bool _isInteracting = false;
+    private bool _interactionAssigned = false;
 
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _interactInput = _playerInput.actions["Interact"];
-        _interactInput.started += context => InteractionStarted();
-        _interactInput.canceled += context => InteractionEnded();
+        if (!_interactionAssigned && _playerInput.actions != null)
+        { 
+            _interactInput = _playerInput.actions["Interact"];
+            _interactInput.started += context => InteractionStarted();
+            _interactInput.canceled += context => InteractionEnded();
+            _interactionAssigned = true;
+        }
         _playerController = GetComponent<PlayerController>();
+    }
+
+    private void Update()
+    {
+        if (!_interactionAssigned && _playerInput.actions != null)
+        {
+            _interactInput = _playerInput.actions["Interact"];
+            _interactInput.started += context => InteractionStarted();
+            _interactInput.canceled += context => InteractionEnded();
+            _interactionAssigned = true;
+        }
     }
     void InteractionEnded()
     {
