@@ -107,6 +107,33 @@ public class PlayerController : MonoBehaviour
         {
             m_ControllerInput = GiveMeInputElseWhere.Invoke();
         }
+        else
+        {
+            m_ControllerInput.jump = GetJump();
+			m_ControllerInput.move = GetMoveInput();
+
+            bool interacting = m_PlayerInput.actions["Interact"].IsPressed();
+
+			switch (m_ControllerInput.diffuseState)
+            {
+                case ControllerInput.DiffuseState.start:
+                    if (interacting) m_ControllerInput.diffuseState = ControllerInput.DiffuseState.doing;
+                    else m_ControllerInput.diffuseState = ControllerInput.DiffuseState.end;
+						break;
+                case ControllerInput.DiffuseState.end:
+					if (interacting) m_ControllerInput.diffuseState = ControllerInput.DiffuseState.start;
+					else m_ControllerInput.diffuseState = ControllerInput.DiffuseState.not;
+					break;
+                case ControllerInput.DiffuseState.doing:
+					if (interacting) m_ControllerInput.diffuseState = ControllerInput.DiffuseState.doing;
+					else m_ControllerInput.diffuseState = ControllerInput.DiffuseState.end;
+					break;
+                case ControllerInput.DiffuseState.not:
+					if (interacting) m_ControllerInput.diffuseState = ControllerInput.DiffuseState.start;
+					else m_ControllerInput.diffuseState = ControllerInput.DiffuseState.not;
+					break;
+            }
+		}
         if (!m_HasInput)
             return;
 
