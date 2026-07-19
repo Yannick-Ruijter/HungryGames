@@ -98,28 +98,28 @@ public class PlayerAudioManager : MonoBehaviour
     
     public static void PlaySoundNonAlloc(string id)
     {
-        GetInstance().PlaySoundNonAllocInternal(id);
+        GetInstance()?.PlaySoundNonAllocInternal(id);
     }
     
     public static void PlaySoundNonAlloc(SoundEffect soundEffect)
     {
         if (!soundEffect)
             return;
-        GetInstance().PlaySoundNonAllocInternal(soundEffect);
+        GetInstance()?.PlaySoundNonAllocInternal(soundEffect);
     }
     
     public static void PlaySoundNonAlloc(SoundEffect soundEffect, Vector3 position)
     {
         if (!soundEffect)
             return;
-        GetInstance().PlaySoundNonAllocInternal(soundEffect, null, position);
+        GetInstance()?.PlaySoundNonAllocInternal(soundEffect, null, position);
     }
     
     public static void PlaySoundNonAlloc(SoundEffect soundEffect, Transform target)
     {
         if (!soundEffect)
             return;
-        GetInstance().PlaySoundNonAllocInternal(soundEffect, target, target.position);
+        GetInstance()?.PlaySoundNonAllocInternal(soundEffect, target, target.position);
     }
 
     private void PlaySoundNonAllocInternal(string id)
@@ -181,7 +181,7 @@ public class PlayerAudioManager : MonoBehaviour
 
     public static SoundEffect Find(string id, bool verbose = false)
     {
-        GetInstance().LocateExistingSoundEffects();
+        GetInstance()?.LocateExistingSoundEffects();
         if (GetInstance()._registeredSoundEffects.TryGetValue(id, out SoundEffect soundEffect))
         {
             return soundEffect;
@@ -197,9 +197,9 @@ public class PlayerAudioManager : MonoBehaviour
         if (_instance)
             return _instance;
         _instance = FindFirstObjectByType<PlayerAudioManager>();
-        if (_instance)
-            return _instance;
-        throw new System.Exception("Failed to locate PlayerAudioManager.");
+        //if (_instance)
+        return _instance;
+		//throw new System.Exception("Failed to locate PlayerAudioManager.");
     }
 
     private AudioSource GetAvailableLocal(AudioResource clip, SoundEffect soundEffect)

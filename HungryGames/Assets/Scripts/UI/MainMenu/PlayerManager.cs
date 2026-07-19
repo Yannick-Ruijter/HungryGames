@@ -58,9 +58,9 @@ public class PlayerManager : MonoBehaviour
 
     private void OnSceneSwitch(Scene arg0, Scene arg1)
     {
-        Debug.Log("hi");
+        //Debug.Log("hi");
 
-        Debug.Log(players);
+        //Debug.Log(players);
         foreach (var player in players)
         {
             //player.type = player.gameObject.GetComponent<PlayerMainMenu>().CurrentType;

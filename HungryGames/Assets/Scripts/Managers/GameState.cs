@@ -139,6 +139,13 @@ public class GameState : MonoBehaviour
 
     public void OnDamage(Entity entity)
     {
+        if (entity == null)
+        {
+            
+            Debug.Log("no entity on damage");
+
+            return;
+        }
         if (IsGameFinished)
             return;
         if (!entity.isPlayer)

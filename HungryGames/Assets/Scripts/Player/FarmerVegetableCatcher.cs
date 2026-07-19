@@ -48,7 +48,7 @@ public class FarmerVegetableCatcher : MonoBehaviour
             _captured = _closestVegetable;
             _closestVegetable.GetComponent<PlayerController>().CanMove = false;
             onAttack.Invoke();
-            Invoke("KillTarget", 0.5f);
+            //Invoke("KillTarget", 0.5f);
             StartCoroutine(Eating());
         }
     }
@@ -66,7 +66,10 @@ public class FarmerVegetableCatcher : MonoBehaviour
         Entity entity = _closestVegetable.GetComponent<Entity>();
         
         yield return new WaitForSeconds(_stunDelay);
-        entity?.TakeDamage();
+        if(entity)
+        {
+            entity.TakeDamage();
+        }
         if (entity && !entity.isPlayer)
         {
             if (!entity.isPlayer)
@@ -136,7 +139,14 @@ public class FarmerVegetableCatcher : MonoBehaviour
         }
         if(tempClosestVegetable != _closestVegetable && _closestVegetable != null) _closestVegetable.GetComponent<MeshRenderer>().material.color = Color.white;
         _closestVegetable = tempClosestVegetable;
-        _closestVegetable.GetComponent<MeshRenderer>().material.color = Color.red;
+        if (_closestVegetable != null)
+        {
+            var renderer = _closestVegetable.GetComponent<MeshRenderer>();
+            if (renderer)
+            {
+                renderer.material.color = Color.red;
+            }
+        }
         for (int i = 0; i < nullCounter; i++) _vegetablesInrange.Remove(null);
     }
 

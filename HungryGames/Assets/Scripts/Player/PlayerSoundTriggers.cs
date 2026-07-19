@@ -33,7 +33,7 @@ public class PlayerSoundTriggers : MonoBehaviour
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Vegetables_Footsteps_B");
         }
 
-        Debug.Log("Played footstep");
+        //Debug.Log("Played footstep");
     }
 
     public void Jump()
@@ -62,7 +62,7 @@ public class PlayerSoundTriggers : MonoBehaviour
             PlayerAudioManager.PlaySoundNonAlloc("SFX_Vegetables_Jump_Tomato_B");
         }
 
-        Debug.Log("Played jump");
+        //Debug.Log("Played jump");
     }
 
     public void Cloth()
@@ -79,8 +79,8 @@ public class PlayerSoundTriggers : MonoBehaviour
 
     public void Defuse()
     {
-        if(_audioSource != null)
-            _audioSource.Play();
+        //if(_audioSource != null)
+            //_audioSource.Play();
     }
 
     public void StopDefuse()

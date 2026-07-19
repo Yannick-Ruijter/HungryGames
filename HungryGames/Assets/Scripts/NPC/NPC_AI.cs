@@ -78,7 +78,7 @@ public class NPC_AI : MonoBehaviour
     {
         _changeBehaviourTimer = 1f;
         _bombs = FindAllPrefabInstances();
-        Debug.Log(_bombs);
+        //Debug.Log(_bombs);
         _playerController.GiveMeInputElseWhere += GetControllerInput;
         NavMeshHit hit;
         NavMesh.SamplePosition(new Vector3(1, 0, 1), out hit, 100.0f, NavMesh.AllAreas);
@@ -341,7 +341,7 @@ public class NPC_AI : MonoBehaviour
         GameObject closest = null;
         foreach(var bomb in _bombs)
         {
-            Debug.Log("testing bomb");
+            //Debug.Log("testing bomb");
             float distance = Vector3.Distance(transform.position, bomb.transform.position);
             if (closestDistance > distance || closestDistance < 0)
             {
