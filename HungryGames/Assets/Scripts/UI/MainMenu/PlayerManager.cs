@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnPlayerJoined(PlayerInput playerInput)
     {
+        if (playerInput.devices.Count == 0) return;
         var data = new PlayerData
         {
             user = playerInput.user,
