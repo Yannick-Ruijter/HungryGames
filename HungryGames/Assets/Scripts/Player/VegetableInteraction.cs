@@ -14,7 +14,7 @@ public class VegetableInteraction : MonoBehaviour
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
-        if (!_interactionAssigned && _playerInput.actions != null)
+        if (!_interactionAssigned && _playerInput && _playerInput.actions != null)
         { 
             _interactInput = _playerInput.actions["Interact"];
             _interactInput.started += context => InteractionStarted();
@@ -26,7 +26,7 @@ public class VegetableInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (!_interactionAssigned && _playerInput.actions != null)
+        if (!_interactionAssigned && _playerInput && _playerInput.actions != null)
         {
             _interactInput = _playerInput.actions["Interact"];
             _interactInput.started += context => InteractionStarted();

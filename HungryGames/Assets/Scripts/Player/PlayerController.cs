@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     
     private bool m_HasInput
     {
-        get { return m_PlayerInput.actions || GiveMeInputElseWhere != null;  }
+        get { return GiveMeInputElseWhere != null || (m_PlayerInput && m_PlayerInput.actions); }
     }
     
     void Start()
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         
         _camera = Camera.main;
         
-        if (!inputAssigned && m_PlayerInput.actions != null)
+        if (!inputAssigned && m_PlayerInput && m_PlayerInput.actions != null)
         {
             m_MoveInput = m_PlayerInput.actions["Move"];
             m_JumpInput = m_PlayerInput.actions["Jump"];
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (!inputAssigned && m_PlayerInput.actions != null)
+        if (!inputAssigned && m_PlayerInput && m_PlayerInput.actions != null)
         {
             m_MoveInput = m_PlayerInput.actions["Move"];
             m_JumpInput = m_PlayerInput.actions["Jump"];

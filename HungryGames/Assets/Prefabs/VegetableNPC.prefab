@@ -23,7 +23,7 @@ PrefabInstance:
     - target: {fileID: 2549104550721976278, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
       propertyPath: m_PlayerInput
       value: 
-      objectReference: {fileID: 220723282974851990}
+      objectReference: {fileID: 0}
     - target: {fileID: 3657671574565430792, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1
@@ -132,7 +132,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3683759908017638962, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -146,17 +147,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8415936440334428241}
   m_SourcePrefab: {fileID: 100100000, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
---- !u!114 &220723282974851990 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3683759908017638962, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
-  m_PrefabInstance: {fileID: 3463112766500916644}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8459494856775291885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
 --- !u!114 &1400425571463543410 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2549104550721976278, guid: 951d0367481747e429b88d4cc13e2ed6, type: 3}
