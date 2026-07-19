@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     public bool m_IsGrounded = false;
 
     public bool CanMove = true;
+
+    private bool inputAssigned = false;
     
     private bool m_HasInput
     {
@@ -59,10 +61,11 @@ public class PlayerController : MonoBehaviour
         
         _camera = Camera.main;
         
-        if (m_PlayerInput)
+        if (!inputAssigned && m_PlayerInput.actions != null)
         {
             m_MoveInput = m_PlayerInput.actions["Move"];
             m_JumpInput = m_PlayerInput.actions["Jump"];
+            inputAssigned = true;
         }
     }
 
@@ -91,6 +94,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        if (!inputAssigned && m_PlayerInput.actions != null)
+        {
+            m_MoveInput = m_PlayerInput.actions["Move"];
+            m_JumpInput = m_PlayerInput.actions["Jump"];
+            inputAssigned = true;
+        }
+
         if (!CanMove)
             return;
         if (GiveMeInputElseWhere != null)
