@@ -79,7 +79,6 @@ public class MineController : MonoBehaviour, IInteractable
         {
             foreach (var player in _toBeRemovedPlayers)
             {
-                player.GetComponent<VegetableInteraction>().StopInteracting();
                 _interactingPlayers.Remove(player);
             }
             _toBeRemovedPlayers.Clear();

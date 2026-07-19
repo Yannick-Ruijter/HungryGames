@@ -79,11 +79,13 @@ public class PlayerSoundTriggers : MonoBehaviour
 
     public void Defuse()
     {
-        _audioSource.Play();
+        if(_audioSource != null)
+            _audioSource.Play();
     }
 
     public void StopDefuse()
     {
-        _audioSource.Stop();
+        if (_audioSource != null)
+            _audioSource.Stop();
     }
 }
